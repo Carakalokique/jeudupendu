@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jeu du Pendu</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Roboto&display=swap"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="header">Jeu du Pendu</div>
+    <div id="game">
+      <div class="column"></div>
+      <div class="column">
+        <svg id="hangman" width="200" height="200" style="display: inline">
+          <line
+            id="ground-part-structure"
+            x1="0"
+            y1="199"
+            x2="120"
+            y2="199"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="main-part-structure"
+            x1="30"
+            y1="0"
+            x2="30"
+            y2="200"
+            stroke="white"
+            stroke-width="4"
+          />
+          <line
+            id="top-part-structure"
+            x1="30"
+            y1="2"
+            x2="130"
+            y2="2"
+            stroke="white"
+            stroke-width="4"
+          />
+          <line
+            id="rope"
+            x1="130"
+            y1="20"
+            x2="130"
+            y2="0"
+            stroke="white"
+            stroke-width="2"
+          />
+          <circle
+            id="head"
+            cx="130"
+            cy="50"
+            r="30"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+            fill="transparent"
+          />
+          <line
+            id="body"
+            x1="130"
+            y1="80"
+            x2="130"
+            y2="130"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="left-arm"
+            x1="130"
+            y1="90"
+            x2="100"
+            y2="120"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="right-arm"
+            x1="130"
+            y1="90"
+            x2="160"
+            y2="120"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="left-leg"
+            x1="130"
+            y1="130"
+            x2="100"
+            y2="170"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="right-leg"
+            x1="130"
+            y1="130"
+            x2="160"
+            y2="170"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+        </svg>
+        <p id="underscore"></p>
+        <p id="incorrectLetters"></p>
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <p id="modalMessage" style="color: #29b6f6"></p>
+            <button id="restartButton">Recommencer</button>
+          </div>
+        </div>
+      </div>
+      <div class="column"></div>
+    </div>
+    <div class="content">
+      <h1>
+        Jeu du Pendu: Jouez au Pendu Classique en Ligne Gratuitement (Pas
+        d'Inscription Requise)
+      </h1>
+      <p>
+        Jouez au Pendu Classique en ligne gratuitement. Défiez-vous avec des
+        mots aléatoires.
+      </p>
+      <p>
+        Ce jeu est considéré comme le jeu classique du Pendu. Nous avons gardé
+        le gameplay original et le style de ce classique intemporel, et avons
+        amélioré ses graphiques et ses fonctionnalités. Gardez votre esprit vif
+        et détendez-vous en jouant à ces jeux classiques de réflexion.
+      </p>
+      <p>
+        Nous avons fait tout notre possible pour créer un jeu avec un gameplay
+        fluide, un design moderne et toutes les fonctionnalités que vous
+        connaissez et aimez du jeu classique.
+      </p>
+      <p>
+        Nous mettons régulièrement à jour notre site en fonction des
+        commentaires des utilisateurs. N'hésitez pas à nous contacter à
+        <a href="mailto:contact@online-pendu.com">contact@jeudupendu.com</a> si
+        vous avez des commentaires ou des questions. La dernière mise à jour a
+        eu lieu le 4 juin 2023. Amusez-vous !
+      </p>
+      <h2>Règles du Jeu du Pendu</h2>
+      <p>
+        Pour jouer, vous avez besoin d'un mot à deviner. Si vous jouez en ligne,
+        le mot est choisi automatiquement. Si vous jouez avec un papier et un
+        crayon, l'un des joueurs doit penser à un mot et dessiner les tirets
+        correspondants. Ensuite, l'autre joueur commence à proposer des lettres.
+        Si la lettre proposée est dans le mot, elle est écrite dans les espaces
+        appropriés. Si la lettre proposée n'est pas dans le mot, une partie du
+        pendu est dessinée. Le jeu se poursuit jusqu'à ce que le mot soit deviné
+        ou que le dessin du pendu soit terminé.
+      </p>
+      <h2>Comment Jouer au Jeu du Pendu</h2>
+      <p>
+        Étape 1: Au début, un mot est choisi au hasard et les tirets
+        correspondants sont affichés. Si vous jouez en ligne, cela est fait
+        automatiquement pour vous.<br />
+        Étape 2: Vous commencez à proposer des lettres. Si la lettre que vous
+        proposez est dans le mot, elle est révélée dans les espaces
+        appropriés.<br />
+        Étape 3: Si la lettre que vous proposez n'est pas dans le mot, une
+        partie du pendu est dessinée. Vous disposez de plusieurs essais
+        incorrects avant que le dessin du pendu ne soit terminé.<br />
+        Étape 4: Le jeu se poursuit jusqu'à ce que vous ayez deviné le mot ou
+        que le dessin du pendu soit terminé. Si vous devinez le mot, vous gagnez
+        ! Si le dessin du pendu est terminé avant que vous ayez deviné le mot,
+        vous perdez.
+      </p>
+      <h2>Stratégies de jeu</h2>
+      <ol>
+        <li>
+          Commencez par les lettres les plus fréquentes : En français, certaines
+          lettres apparaissent plus fréquemment que d'autres. Les lettres les
+          plus couramment utilisées sont, dans l'ordre, E, A, S, I, N, T, R, U,
+          O, L. Commencez par ces lettres pour avoir plus de chances de trouver
+          celles qui figurent dans le mot.
+        </li>
+        <li>
+          Prenez en compte la longueur du mot : Si le mot est court, il est plus
+          probable qu'il contienne des lettres moins fréquentes. Si le mot est
+          long, il y a de meilleures chances qu'il contienne plusieurs des
+          lettres les plus courantes.
+        </li>
+        <li>
+          Utilisez des lettres qui apparaissent souvent ensemble : En français,
+          certaines lettres ont tendance à apparaître ensemble. Par exemple, si
+          vous avez découvert une lettre "Q", il y a de grandes chances que la
+          lettre suivante soit un "U". Si vous avez une lettre "E", il y a de
+          fortes chances que la lettre suivante ou précédente soit un "S" ou un
+          "T".
+        </li>
+        <li>
+          Rappelez-vous des mots précédents : Si vous jouez plusieurs fois avec
+          le même adversaire, essayez de vous souvenir des mots qu'il a utilisés
+          précédemment. Il y a de bonnes chances qu'il répète certains mots ou
+          qu'il utilise des mots similaires.
+        </li>
+        <li>
+          Envisagez toutes les possibilités : Lorsque vous avez découvert
+          certaines lettres, essayez de penser à tous les mots possibles qui
+          pourraient correspondre à ce modèle. Cela peut vous aider à choisir la
+          meilleure lettre à essayer ensuite.
+        </li>
+        <li>
+          Ne vous précipitez pas : Prenez votre temps pour réfléchir à votre
+          prochaine lettre. Il est préférable de passer un peu plus de temps à
+          choisir soigneusement votre lettre que de vous précipiter et de faire
+          une erreur.
+        </li>
+      </ol>
+      <h2>Foire Aux Questions (FAQ)</h2>
+      <h3>Quel est le jeu de réflexion le plus populaire?</h3>
+      <p>
+        Il existe des centaines de jeux de réflexion différents, principalement
+        basés sur des lettres, mais les gens ont tendance à se concentrer sur
+        quelques jeux sélectionnés. Depuis que le jeu du Pendu a été introduit
+        comme un passe-temps populaire, il est devenu le jeu de réflexion
+        préféré de beaucoup de gens. Sur ce site, le jeu du Pendu représente une
+        énorme proportion des parties jouées, et les chiffres sont à peu près
+        les mêmes sur des sites similaires.
+      </p>
+      <h3>Comment se joue le Jeu du Pendu?</h3>
+      <p>
+        Tout le jeu tourne autour de deviner un mot en proposant des lettres. Si
+        la lettre proposée est dans le mot, elle est révélée. Si la lettre
+        proposée n'est pas dans le mot, une partie du pendu est dessinée. Le jeu
+        se termine lorsque le mot est deviné ou que le dessin du pendu est
+        terminé.
+      </p>
+      <h3>Comment gagne-t-on au Jeu du Pendu?</h3>
+      <p>
+        Vous gagnez en devinant le mot avant que le dessin du pendu ne soit
+        terminé. Si vous parvenez à deviner le mot, vous gagnez. Si le dessin du
+        pendu est terminé avant que vous ayez deviné le mot, vous perdez.
+      </p>
+      <p>
+        Si vos questions ne sont pas répondues par notre FAQ ci-dessous,
+        n'hésitez pas à nous contacter à
+        <a href="mailto:contact@online-pendu.com">contact@jeudupendu.com</a>, et
+        nous ferons de notre mieux pour vous aider.
+      </p>
+    </div>
+    <script src="YourGameScript.js"></script>
+  </body>
+</html>
