@@ -102,8 +102,7 @@ fetch("words.json")
     restartButton.addEventListener("click", function () {
       location.reload();
     });
-    restartButton.addEventListener("touchstart", function (event) {
-      event.preventDefault();
+    restartButton.addEventListener("touchend", function () {
       location.reload();
     });
   })
