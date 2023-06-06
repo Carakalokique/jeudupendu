@@ -110,7 +110,8 @@ button {
   background: #333;
 }
 
-@media (min-width: 768px) {
+/* Style for larger devices */
+@media screen and (min-width: 768px) {
   #game {
     flex-direction: row;
   }
@@ -118,21 +119,14 @@ button {
     width: 33.33%;
   }
   .content {
-    margin-left: 15em;
-    margin-right: 15em;
+    margin: 2em 5em;
+    font-size: 2em;
   }
   .keyboard-row {
     width: 60%;
   }
   .modal-content {
     width: 40%;
-  }
-}
-/* Style for larger devices */
-@media screen and (min-width: 768px) {
-  .content {
-    margin: 2em 5em;
-    font-size: 2em;
   }
 }
 
