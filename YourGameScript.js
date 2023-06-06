@@ -8,7 +8,6 @@ fetch("words.json")
   .then((data) => {
     words = data;
 
-    // The rest of your code that depends on `words` should go here
     var word = words[Math.floor(Math.random() * words.length)]; // Choose a random word
     var wordArray = word.split("");
     var hiddenWordArray = word.split("").map((letter) => "_");
@@ -86,6 +85,18 @@ fetch("words.json")
         guessLetter(key);
       }
     });
+
+    // Event listener for keyboard buttons
+    const buttons = document.querySelectorAll(".keyboard-button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", function () {
+        guessLetter(this.value);
+      });
+    });
+
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      document.getElementById("azerty-keyboard").style.display = "flex";
+    }
 
     var restartButton = document.getElementById("restartButton");
     restartButton.addEventListener("click", function () {
