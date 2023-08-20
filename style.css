@@ -23,7 +23,7 @@ body {
   flex-direction: column; /* for mobile */
   justify-content: space-between;
   align-items: center;
-  height: 90vh;
+  height: 80vh;
   min-height: 70vh;
   background-color: #29b6f6;
   color: white;
