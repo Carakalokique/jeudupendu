@@ -24,6 +24,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 90vh;
+  min-height: 70vh;
   background-color: #29b6f6;
   color: white;
   font-size: 2em;
@@ -112,9 +113,6 @@ button {
 
 /* Style for larger devices */
 @media screen and (min-width: 768px) {
-  #game {
-    flex-direction: row;
-  }
   .column {
     width: 33.33%;
   }
