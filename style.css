@@ -23,8 +23,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 80vh;
-  min-height: 70vh;
+  height: 90vh;
+  min-height: 80vh;
   background-color: #29b6f6;
   color: white;
   font-size: 2em;
