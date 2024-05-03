@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -323,3 +324,330 @@
     <script src="YourGameScript.js"></script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-QGWR4RGCR3");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jouez au jeu du Pendu et trouvez le mot caché. Devinez les lettres et amusez-vous en testant votre vocabulaire. Plus de 10,000 mots à découvrir!"
+    />
+
+    <title>Jeu du Pendu en Ligne et Gratuit</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="header">Jeu du Pendu</div>
+    <div id="game">
+      <div class="column"></div>
+      <div class="column">
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <p id="modalMessage" style="color: #29b6f6"></p>
+            <button id="restartButton">Recommencer</button>
+          </div>
+        </div>
+        <svg id="hangman" width="200" height="200" style="display: inline">
+          <line
+            id="ground-part-structure"
+            x1="0"
+            y1="199"
+            x2="120"
+            y2="199"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="main-part-structure"
+            x1="30"
+            y1="0"
+            x2="30"
+            y2="200"
+            stroke="white"
+            stroke-width="4"
+          />
+          <line
+            id="top-part-structure"
+            x1="30"
+            y1="2"
+            x2="130"
+            y2="2"
+            stroke="white"
+            stroke-width="4"
+          />
+          <line
+            id="rope"
+            x1="130"
+            y1="20"
+            x2="130"
+            y2="0"
+            stroke="white"
+            stroke-width="2"
+          />
+          <circle
+            id="head"
+            cx="130"
+            cy="50"
+            r="30"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+            fill="transparent"
+          />
+          <line
+            id="body"
+            x1="130"
+            y1="80"
+            x2="130"
+            y2="130"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="left-arm"
+            x1="130"
+            y1="90"
+            x2="100"
+            y2="120"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="right-arm"
+            x1="130"
+            y1="90"
+            x2="160"
+            y2="120"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="left-leg"
+            x1="130"
+            y1="130"
+            x2="100"
+            y2="170"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+          <line
+            id="right-leg"
+            x1="130"
+            y1="130"
+            x2="160"
+            y2="170"
+            style="display: none"
+            stroke="white"
+            stroke-width="3"
+          />
+        </svg>
+        <p id="underscore"></p>
+        <p id="incorrectLetters"></p>
+        <div class="keyboard">
+          <div class="keyboard-row">
+            <button class="keyboard-button" value="a">A</button>
+            <button class="keyboard-button" value="z">Z</button>
+            <button class="keyboard-button" value="e">E</button>
+            <button class="keyboard-button" value="r">R</button>
+            <button class="keyboard-button" value="t">T</button>
+            <button class="keyboard-button" value="y">Y</button>
+            <button class="keyboard-button" value="u">U</button>
+            <button
+              class="keyboard-button"
+              value="i"
+              style="padding-left: 0.5em; padding-right: 0.5em"
+            >
+              I
+            </button>
+            <button class="keyboard-button" value="o">O</button>
+            <button class="keyboard-button" value="p">P</button>
+          </div>
+          <div class="keyboard-row">
+            <button class="keyboard-button" value="q">Q</button>
+            <button class="keyboard-button" value="s">S</button>
+            <button class="keyboard-button" value="d">D</button>
+            <button class="keyboard-button" value="f">F</button>
+            <button class="keyboard-button" value="g">G</button>
+            <button class="keyboard-button" value="h">H</button>
+            <button class="keyboard-button" value="j">J</button>
+            <button class="keyboard-button" value="k">K</button>
+            <button class="keyboard-button" value="l">L</button>
+            <button class="keyboard-button" value="m">M</button>
+          </div>
+          <div class="keyboard-row">
+            <button class="keyboard-button" value="w">W</button>
+            <button class="keyboard-button" value="x">X</button>
+            <button class="keyboard-button" value="c">C</button>
+            <button class="keyboard-button" value="v">V</button>
+            <button class="keyboard-button" value="b">B</button>
+            <button class="keyboard-button" value="n">N</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="column"></div>
+    </div>
+    <div class="content">
+      <h1>Jeu du Pendu: Jouez au Jeu du Pendu en Ligne et Gratuit</h1>
+      <p>
+        Jouez au Jeu du Pendu en Ligne et Gratuit. Défiez-vous avec plus de
+        10000 mots en aléatoires.
+      </p>
+      <p>
+        Ce jeu est considéré comme le jeu classique du Pendu. C’est-à-dire que
+        vous avez un maximum de 6 essais pour trouver le mot.
+      </p>
+      <p>
+        Nous avons gardé le gameplay original et le style de ce classique
+        intemporel, et avons amélioré ses graphiques et fonctionnalités. Gardez
+        votre esprit vif et détendez-vous en jouant à ce jeu du pendu classique.
+      </p>
+      <p>
+        Nous mettons régulièrement à jour notre site en fonction des
+        commentaires des utilisateurs. N'hésitez pas à nous contacter à
+        <a href="mailto:contact@jeudupendu.com" style="color: #333333"
+          >contact@jeudupendu.com</a
+        >
+        si vous avez des commentaires ou des questions. La dernière mise à jour
+        a eu lieu le 22 novembre 2023. Amusez-vous bien !
+      </p>
+
+      <h2>Quelles sont les règles du jeu du pendu ? Comment y joue-t-on ?</h2>
+      <p>
+        Le jeu du pendu se joue généralement à deux personnes, bien qu'il existe
+        des variantes en ligne avec plus de joueurs et des thèmes spécifiques.
+        <br /><br />
+
+        L'un des joueurs pense à un mot, une phrase ou une expression (selon la
+        version) et dessine une potence et des tirets, un pour chaque lettre du
+        mot ou de l'expression, sans tirets pour les espaces. Si vous jouez au
+        Jeu du Pendu en ligne, cela est fait automatiquement pour vous.<br /><br />
+
+        L'autre joueur, essayant de deviner le mot, annonce une lettre à chaque
+        tour. <br /><br />
+
+        Si la lettre fait partie du mot, elle est inscrite à sa place sur les
+        tirets correspondants, autant de fois qu'elle apparaît dans le mot.
+        <br /><br />
+
+        Si la lettre n'est pas dans le mot, un trait est ajouté au dessin du
+        pendu. Le jeu continue jusqu'à ce que le mot soit deviné (le joueur qui
+        devine gagne) ou que le dessin du pendu soit complété (le joueur qui a
+        choisi le mot gagne). <br /><br />
+
+        Le nombre de coups, c'est-à-dire le nombre de traits nécessaires pour
+        dessiner le pendu, peut varier, allant généralement de 6 à 12, et peut
+        être augmenté pour faciliter le jeu en ajoutant plus de traits au
+        dessin. <br /><br />
+
+        Certaines versions peuvent également inclure des phrases, des titres de
+        films, de chansons, de livres ou des citations à deviner, introduisant
+        ainsi des variantes supplémentaires au jeu traditionnel.
+      </p>
+
+      <h2>Quel est le mot le plus difficile au jeu du pendu ?</h2>
+      <p>
+        Bien que l'on puisse penser que les mots longs et complexes constituent
+        le défi ultime, la réalité est plus nuancée. <br /><br />
+
+        Selon les analyses, un "mot compliqué" pour le jeu du pendu ne se mesure
+        pas uniquement par sa longueur ou son obscurité, mais par la stratégie
+        de sélection. Les mots de 4 à 5 lettres, particulièrement ceux avec des
+        lettres peu communes ou des finales similaires comme -uzz ou -uff,
+        peuvent s'avérer étonnamment ardus à deviner. Des exemples tels que
+        "Jazz", "Buzz", ou même des termes techniques comme "Zugzwang"
+        illustrent cette complexité. <br /><br />
+
+        En outre, des mots rares, des jeux de mots ou des mots contenant des
+        combinaisons inhabituelles de lettres augmentent la difficulté. La
+        sélection d'un mot compliqué pendu requiert donc une compréhension
+        subtile de la psychologie du joueur, une connaissance des lettres
+        fréquemment choisies, et une appréciation des mots qui sont à la fois
+        courts et contiennent des lettres rares. Le choix judicieux d'un mot
+        peut transformer le jeu en une énigme captivante et stimulante, mettant
+        en évidence le caractère éducatif et divertissant du pendu.
+      </p>
+
+      <h2>Comment gagne-t-on au Jeu du Pendu ?</h2>
+      <ol>
+        <li>
+          Commencez par les lettres les plus fréquentes : En français, certaines
+          lettres apparaissent plus fréquemment que d'autres. Les lettres les
+          plus couramment utilisées sont, dans l'ordre, E, A, S, I, N, T, R, U,
+          O, L. Commencez par ces lettres pour avoir plus de chances de trouver
+          celles qui figurent dans le mot.
+        </li>
+        <li>
+          Prenez en compte la longueur du mot : Si le mot est court, il est plus
+          probable qu'il contienne des lettres moins fréquentes. Si le mot est
+          long, il y a de meilleures chances qu'il contienne plusieurs des
+          lettres les plus courantes.
+        </li>
+        <li>
+          Utilisez des lettres qui apparaissent souvent ensemble : En français,
+          certaines lettres ont tendance à apparaître ensemble. Par exemple, si
+          vous avez découvert une lettre "Q", il y a de grandes chances que la
+          lettre suivante soit un "U". Si vous avez une lettre "E", il y a de
+          fortes chances que la lettre suivante ou précédente soit un "S" ou un
+          "T".
+        </li>
+        <li>
+          Rappelez-vous des mots précédents : Si vous jouez plusieurs fois avec
+          le même adversaire, essayez de vous souvenir des mots qu'il a utilisés
+          précédemment. Il y a de bonnes chances qu'il répète certains mots ou
+          qu'il utilise des mots similaires.
+        </li>
+        <li>
+          Envisagez toutes les possibilités : Lorsque vous avez découvert
+          certaines lettres, essayez de penser à tous les mots possibles qui
+          pourraient correspondre à ce modèle. Cela peut vous aider à choisir la
+          meilleure lettre à essayer ensuite.
+        </li>
+        <li>
+          Ne vous précipitez pas : Prenez votre temps pour réfléchir à votre
+          prochaine lettre. Il est préférable de passer un peu plus de temps à
+          choisir soigneusement votre lettre que de vous précipiter et de faire
+          une erreur.
+        </li>
+      </ol>
+      <p>
+        Rappelez-vous, cependant, que le Jeu du Pendu est en fin de compte un
+        jeu de hasard. Même si vous utilisez toutes ces stratégies, il y a
+        toujours une chance que vous ne réussissiez pas à deviner le mot à
+        temps. C'est ce qui rend le jeu excitant et amusant à jouer. Bonne
+        chance !
+      </p>
+    </div>
+    <script src="YourGameScript.js"></script>
+  </body>
+</html>
+>>>>>>> 70d91112da1f4cb62086c6d4187be000d787c82c
