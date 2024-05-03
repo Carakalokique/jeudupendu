@@ -63,7 +63,7 @@ fetch("words.json")
 
       if (incorrectLetters.length === hangmanParts.length) {
         modalMessage.textContent =
-          "Vous avez perdu! Le mot était : " + word + ".";
+          "Vous avez perdu ! Le mot était : " + word + ".";
         modal.style.display = "block";
       }
     }
@@ -86,6 +86,19 @@ fetch("words.json")
       const azertyKeyboard = document.getElementById("azerty-keyboard");
       if (azertyKeyboard) azertyKeyboard.style.display = "flex";
     }
+
+    var solitaireLink = document.getElementById("solitaireLink");
+
+    // Example action for the new button: navigate to a different URL
+    solitaireLink.addEventListener("click", function () {
+      window.location.href = "https://lejeudusolitaire.com";
+    });
+    solitaireLink.addEventListener("touchend", function () {
+      window.location.href = "https://lejeudusolitaire.com";
+    });
+
+    // Set z-index for the new button similar to the restart button for consistent styling
+    solitaireLink.style.zIndex = 9998;
 
     var restartButton = document.getElementById("restartButton");
     // Set the z-index of the restartButton to a high value
