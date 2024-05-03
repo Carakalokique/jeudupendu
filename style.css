@@ -1,6 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap");
+
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
   color: #333333;
   background-color: #ffffff;
 }
@@ -16,9 +20,11 @@ body {
 
 #game {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 70vh;
+  height: 90vh;
+  min-height: 80vh;
   background-color: #29b6f6;
   color: white;
   font-size: 2em;
@@ -26,23 +32,31 @@ body {
 }
 
 .column {
-  width: 33.33%;
+  width: 100%;
   text-align: center;
 }
 
 .content {
   padding: 20px;
-  margin-left: 15em;
-  margin-right: 15em;
+  margin: 10px;
 }
 
 .content h2 {
   color: #f15a29;
 }
 
-.content a {
-  color: #f15a29;
+a {
+  color: white;
+  font-size: 0.7em;
   text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+a:hover {
+  background-color: #f15a29;
+  color: white;
 }
 
 button {
@@ -55,40 +69,75 @@ button {
   border: none;
   border-radius: 5px;
 }
+
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 40%; /* Could be more or less, depending on screen size */
+  width: 90%;
   border-radius: 5px;
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+.keyboard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5em;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+.keyboard-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.keyboard-button {
+  margin: 0.1em;
+  padding: 0.3em;
+  border: none;
+  background: #f15a29;
+  color: #ffffff;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.8em;
+}
+
+.keyboard-button:hover {
+  background: #333;
+}
+
+@media screen and (min-width: 768px) {
+  .column {
+    width: 33.33%;
+  }
+  .content {
+    margin: 2em 5em;
+    font-size: 2em;
+  }
+  .keyboard-row {
+    width: 60%;
+  }
+  .modal-content {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .content {
+    margin: 2em 1em;
+  }
 }

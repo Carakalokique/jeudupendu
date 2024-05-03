@@ -1,22 +1,17 @@
-// Selecting the game div
 var gameDiv = document.getElementById("game");
 
-// Fetch the list of words from a JSON file
 var words = [];
 fetch("words.json")
   .then((response) => response.json())
   .then((data) => {
     words = data;
 
-    // The rest of your code that depends on `words` should go here
-    var word = words[Math.floor(Math.random() * words.length)]; // Choose a random word
+    var word = words[Math.floor(Math.random() * words.length)];
     var wordArray = word.split("");
     var hiddenWordArray = word.split("").map((letter) => "_");
 
-    // Incorrectly guessed letters
     var incorrectLetters = [];
 
-    // Hangman steps
     var hangmanParts = [
       "head",
       "body",
@@ -26,7 +21,6 @@ fetch("words.json")
       "right-leg",
     ];
 
-    // Creating elements
     var hangmanDisplay = document.getElementById("hangman");
 
     var underscoreDisplay = document.getElementById("underscore");
@@ -37,9 +31,7 @@ fetch("words.json")
     var modal = document.getElementById("modal");
     var modalMessage = document.getElementById("modalMessage");
 
-    // Function to guess a letter
     function guessLetter(guessedLetter) {
-      // Check if the letter is in the word
       if (wordArray.includes(guessedLetter)) {
         wordArray.forEach(function (letter, index) {
           if (letter === guessedLetter) {
@@ -61,7 +53,6 @@ fetch("words.json")
 
       underscoreDisplay.textContent = hiddenWordArray.join(" ");
 
-      // Check if the word is completely guessed
       if (hiddenWordArray.join("") === word) {
         modalMessage.textContent =
           "Félicitations! Vous avez gagné! Vous avez bien deviné le mot : " +
@@ -70,7 +61,6 @@ fetch("words.json")
         modal.style.display = "block";
       }
 
-      // Check if the game is lost
       if (incorrectLetters.length === hangmanParts.length) {
         modalMessage.textContent =
           "Vous avez perdu! Le mot était : " + word + ".";
@@ -78,17 +68,33 @@ fetch("words.json")
       }
     }
 
-    // Adding event listener for keyboard input
     window.addEventListener("keydown", function (event) {
       var key = event.key.toLowerCase();
-      // Check if it's a letter
       if (key.length === 1 && key.match(/[a-z]/i)) {
         guessLetter(key);
       }
     });
 
+    const buttons = document.querySelectorAll(".keyboard-button");
+    buttons.forEach((button) => {
+      button.addEventListener("click", function () {
+        guessLetter(this.value);
+      });
+    });
+
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      const azertyKeyboard = document.getElementById("azerty-keyboard");
+      if (azertyKeyboard) azertyKeyboard.style.display = "flex";
+    }
+
     var restartButton = document.getElementById("restartButton");
+    // Set the z-index of the restartButton to a high value
+    restartButton.style.zIndex = 9999;
+
     restartButton.addEventListener("click", function () {
+      location.reload();
+    });
+    restartButton.addEventListener("touchend", function () {
       location.reload();
     });
   })

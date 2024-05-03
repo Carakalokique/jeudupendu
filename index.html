@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-QGWR4RGCR3");
+    </script>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
     <meta charset="UTF-8" />
-    <title>Jeu du Pendu</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Roboto&display=swap"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Jouez au jeu du Pendu et trouvez le mot caché. Devinez les lettres et amusez-vous en testant votre vocabulaire. Plus de 10,000 mots à découvrir!"
     />
+
+    <title>Jeu du Pendu en Ligne et Gratuit</title>
+
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body>
@@ -14,6 +39,12 @@
     <div id="game">
       <div class="column"></div>
       <div class="column">
+        <div id="modal" class="modal">
+          <div class="modal-content">
+            <p id="modalMessage" style="color: #29b6f6"></p>
+            <button id="restartButton">Recommencer</button>
+          </div>
+        </div>
         <svg id="hangman" width="200" height="200" style="display: inline">
           <line
             id="ground-part-structure"
@@ -114,70 +145,132 @@
         </svg>
         <p id="underscore"></p>
         <p id="incorrectLetters"></p>
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <p id="modalMessage" style="color: #29b6f6"></p>
-            <button id="restartButton">Recommencer</button>
+        <div class="keyboard">
+          <div class="keyboard-row">
+            <button class="keyboard-button" value="a">A</button>
+            <button class="keyboard-button" value="z">Z</button>
+            <button class="keyboard-button" value="e">E</button>
+            <button class="keyboard-button" value="r">R</button>
+            <button class="keyboard-button" value="t">T</button>
+            <button class="keyboard-button" value="y">Y</button>
+            <button class="keyboard-button" value="u">U</button>
+            <button
+              class="keyboard-button"
+              value="i"
+              style="padding-left: 0.5em; padding-right: 0.5em"
+            >
+              I
+            </button>
+            <button class="keyboard-button" value="o">O</button>
+            <button class="keyboard-button" value="p">P</button>
+          </div>
+          <div class="keyboard-row">
+            <button class="keyboard-button" value="q">Q</button>
+            <button class="keyboard-button" value="s">S</button>
+            <button class="keyboard-button" value="d">D</button>
+            <button class="keyboard-button" value="f">F</button>
+            <button class="keyboard-button" value="g">G</button>
+            <button class="keyboard-button" value="h">H</button>
+            <button class="keyboard-button" value="j">J</button>
+            <button class="keyboard-button" value="k">K</button>
+            <button class="keyboard-button" value="l">L</button>
+            <button class="keyboard-button" value="m">M</button>
+          </div>
+          <div class="keyboard-row">
+            <button class="keyboard-button" value="w">W</button>
+            <button class="keyboard-button" value="x">X</button>
+            <button class="keyboard-button" value="c">C</button>
+            <button class="keyboard-button" value="v">V</button>
+            <button class="keyboard-button" value="b">B</button>
+            <button class="keyboard-button" value="n">N</button>
           </div>
         </div>
       </div>
+
       <div class="column"></div>
     </div>
     <div class="content">
-      <h1>
-        Jeu du Pendu: Jouez au Pendu Classique en Ligne Gratuitement (Pas
-        d'Inscription Requise)
-      </h1>
+      <h1>Jeu du Pendu: Jouez au Jeu du Pendu en Ligne et Gratuit</h1>
       <p>
-        Jouez au Pendu Classique en ligne gratuitement. Défiez-vous avec des
-        mots aléatoires.
+        Jouez au Jeu du Pendu en Ligne et Gratuit. Défiez-vous avec plus de
+        10000 mots en aléatoires.
       </p>
       <p>
-        Ce jeu est considéré comme le jeu classique du Pendu. Nous avons gardé
-        le gameplay original et le style de ce classique intemporel, et avons
-        amélioré ses graphiques et ses fonctionnalités. Gardez votre esprit vif
-        et détendez-vous en jouant à ces jeux classiques de réflexion.
+        Ce jeu est considéré comme le jeu classique du Pendu. C’est-à-dire que
+        vous avez un maximum de 6 essais pour trouver le mot.
       </p>
       <p>
-        Nous avons fait tout notre possible pour créer un jeu avec un gameplay
-        fluide, un design moderne et toutes les fonctionnalités que vous
-        connaissez et aimez du jeu classique.
+        Nous avons gardé le gameplay original et le style de ce classique
+        intemporel, et avons amélioré ses graphiques et fonctionnalités. Gardez
+        votre esprit vif et détendez-vous en jouant à ce jeu du pendu classique.
       </p>
       <p>
         Nous mettons régulièrement à jour notre site en fonction des
         commentaires des utilisateurs. N'hésitez pas à nous contacter à
-        <a href="mailto:contact@online-pendu.com">contact@jeudupendu.com</a> si
-        vous avez des commentaires ou des questions. La dernière mise à jour a
-        eu lieu le 4 juin 2023. Amusez-vous !
+        <a href="mailto:contact@jeudupendu.com" style="color: #333333"
+          >contact@jeudupendu.com</a
+        >
+        si vous avez des commentaires ou des questions. La dernière mise à jour
+        a eu lieu le 22 novembre 2023. Amusez-vous bien !
       </p>
-      <h2>Règles du Jeu du Pendu</h2>
+
+      <h2>Quelles sont les règles du jeu du pendu ? Comment y joue-t-on ?</h2>
       <p>
-        Pour jouer, vous avez besoin d'un mot à deviner. Si vous jouez en ligne,
-        le mot est choisi automatiquement. Si vous jouez avec un papier et un
-        crayon, l'un des joueurs doit penser à un mot et dessiner les tirets
-        correspondants. Ensuite, l'autre joueur commence à proposer des lettres.
-        Si la lettre proposée est dans le mot, elle est écrite dans les espaces
-        appropriés. Si la lettre proposée n'est pas dans le mot, une partie du
-        pendu est dessinée. Le jeu se poursuit jusqu'à ce que le mot soit deviné
-        ou que le dessin du pendu soit terminé.
+        Le jeu du pendu se joue généralement à deux personnes, bien qu'il existe
+        des variantes en ligne avec plus de joueurs et des thèmes spécifiques.
+        <br /><br />
+
+        L'un des joueurs pense à un mot, une phrase ou une expression (selon la
+        version) et dessine une potence et des tirets, un pour chaque lettre du
+        mot ou de l'expression, sans tirets pour les espaces. Si vous jouez au
+        Jeu du Pendu en ligne, cela est fait automatiquement pour vous.<br /><br />
+
+        L'autre joueur, essayant de deviner le mot, annonce une lettre à chaque
+        tour. <br /><br />
+
+        Si la lettre fait partie du mot, elle est inscrite à sa place sur les
+        tirets correspondants, autant de fois qu'elle apparaît dans le mot.
+        <br /><br />
+
+        Si la lettre n'est pas dans le mot, un trait est ajouté au dessin du
+        pendu. Le jeu continue jusqu'à ce que le mot soit deviné (le joueur qui
+        devine gagne) ou que le dessin du pendu soit complété (le joueur qui a
+        choisi le mot gagne). <br /><br />
+
+        Le nombre de coups, c'est-à-dire le nombre de traits nécessaires pour
+        dessiner le pendu, peut varier, allant généralement de 6 à 12, et peut
+        être augmenté pour faciliter le jeu en ajoutant plus de traits au
+        dessin. <br /><br />
+
+        Certaines versions peuvent également inclure des phrases, des titres de
+        films, de chansons, de livres ou des citations à deviner, introduisant
+        ainsi des variantes supplémentaires au jeu traditionnel.
       </p>
-      <h2>Comment Jouer au Jeu du Pendu</h2>
+
+      <h2>Quel est le mot le plus difficile au jeu du pendu ?</h2>
       <p>
-        Étape 1: Au début, un mot est choisi au hasard et les tirets
-        correspondants sont affichés. Si vous jouez en ligne, cela est fait
-        automatiquement pour vous.<br />
-        Étape 2: Vous commencez à proposer des lettres. Si la lettre que vous
-        proposez est dans le mot, elle est révélée dans les espaces
-        appropriés.<br />
-        Étape 3: Si la lettre que vous proposez n'est pas dans le mot, une
-        partie du pendu est dessinée. Vous disposez de plusieurs essais
-        incorrects avant que le dessin du pendu ne soit terminé.<br />
-        Étape 4: Le jeu se poursuit jusqu'à ce que vous ayez deviné le mot ou
-        que le dessin du pendu soit terminé. Si vous devinez le mot, vous gagnez
-        ! Si le dessin du pendu est terminé avant que vous ayez deviné le mot,
-        vous perdez.
+        Bien que l'on puisse penser que les mots longs et complexes constituent
+        le défi ultime, la réalité est plus nuancée. <br /><br />
+
+        Selon les analyses, un "mot compliqué" pour le jeu du pendu ne se mesure
+        pas uniquement par sa longueur ou son obscurité, mais par la stratégie
+        de sélection. Les mots de 4 à 5 lettres, particulièrement ceux avec des
+        lettres peu communes ou des finales similaires comme -uzz ou -uff,
+        peuvent s'avérer étonnamment ardus à deviner. Des exemples tels que
+        "Jazz", "Buzz", ou même des termes techniques comme "Zugzwang"
+        illustrent cette complexité. <br /><br />
+
+        En outre, des mots rares, des jeux de mots ou des mots contenant des
+        combinaisons inhabituelles de lettres augmentent la difficulté. La
+        sélection d'un mot compliqué pendu requiert donc une compréhension
+        subtile de la psychologie du joueur, une connaissance des lettres
+        fréquemment choisies, et une appréciation des mots qui sont à la fois
+        courts et contiennent des lettres rares. Le choix judicieux d'un mot
+        peut transformer le jeu en une énigme captivante et stimulante, mettant
+        en évidence le caractère éducatif et divertissant du pendu.
       </p>
-      <h2>Stratégies de jeu</h2>
+
+      <h2>Comment gagne-t-on au Jeu du Pendu ?</h2>
       <ol>
         <li>
           Commencez par les lettres les plus fréquentes : En français, certaines
@@ -219,36 +312,12 @@
           une erreur.
         </li>
       </ol>
-      <h2>Foire Aux Questions (FAQ)</h2>
-      <h3>Quel est le jeu de réflexion le plus populaire?</h3>
       <p>
-        Il existe des centaines de jeux de réflexion différents, principalement
-        basés sur des lettres, mais les gens ont tendance à se concentrer sur
-        quelques jeux sélectionnés. Depuis que le jeu du Pendu a été introduit
-        comme un passe-temps populaire, il est devenu le jeu de réflexion
-        préféré de beaucoup de gens. Sur ce site, le jeu du Pendu représente une
-        énorme proportion des parties jouées, et les chiffres sont à peu près
-        les mêmes sur des sites similaires.
-      </p>
-      <h3>Comment se joue le Jeu du Pendu?</h3>
-      <p>
-        Tout le jeu tourne autour de deviner un mot en proposant des lettres. Si
-        la lettre proposée est dans le mot, elle est révélée. Si la lettre
-        proposée n'est pas dans le mot, une partie du pendu est dessinée. Le jeu
-        se termine lorsque le mot est deviné ou que le dessin du pendu est
-        terminé.
-      </p>
-      <h3>Comment gagne-t-on au Jeu du Pendu?</h3>
-      <p>
-        Vous gagnez en devinant le mot avant que le dessin du pendu ne soit
-        terminé. Si vous parvenez à deviner le mot, vous gagnez. Si le dessin du
-        pendu est terminé avant que vous ayez deviné le mot, vous perdez.
-      </p>
-      <p>
-        Si vos questions ne sont pas répondues par notre FAQ ci-dessous,
-        n'hésitez pas à nous contacter à
-        <a href="mailto:contact@online-pendu.com">contact@jeudupendu.com</a>, et
-        nous ferons de notre mieux pour vous aider.
+        Rappelez-vous, cependant, que le Jeu du Pendu est en fin de compte un
+        jeu de hasard. Même si vous utilisez toutes ces stratégies, il y a
+        toujours une chance que vous ne réussissiez pas à deviner le mot à
+        temps. C'est ce qui rend le jeu excitant et amusant à jouer. Bonne
+        chance !
       </p>
     </div>
     <script src="YourGameScript.js"></script>
