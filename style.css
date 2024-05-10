@@ -31,6 +31,10 @@ body {
   padding: 20px;
 }
 
+.incorrectLetters {
+  font-size: 1rem;
+}
+
 .column {
   width: 100%;
   text-align: center;
