@@ -91,10 +91,10 @@ fetch("words.json")
 
     // Example action for the new button: navigate to a different URL
     solitaireLink.addEventListener("click", function () {
-      window.location.href = "https://lejeudusolitaire.com";
+      window.location.href = "https://jeuxvirtuels.com";
     });
     solitaireLink.addEventListener("touchend", function () {
-      window.location.href = "https://lejeudusolitaire.com";
+      window.location.href = "https://jeuxvirtuels.com";
     });
 
     // Set z-index for the new button similar to the restart button for consistent styling
