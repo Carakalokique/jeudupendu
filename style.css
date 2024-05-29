@@ -148,3 +148,21 @@ button:hover {
     margin: 2em 1em;
   }
 }
+footer {
+  background: #29b6f6;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10rem 0 10rem;
+}
+footer .container a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+footer .container a:hover {
+  text-decoration: underline;
+}
