@@ -1,114 +1,123 @@
-var gameDiv = document.getElementById("game");
+document.addEventListener("DOMContentLoaded", function () {
+  var restartButton = document.getElementById("restartButton");
+  // Set the z-index of the restartButton to a high value
+  restartButton.style.zIndex = 9999;
 
-var words = [];
-fetch("words.json")
-  .then((response) => response.json())
-  .then((data) => {
-    words = data;
+  restartButton.addEventListener("click", function () {
+    location.reload();
+  });
 
-    var word = words[Math.floor(Math.random() * words.length)];
-    var wordArray = word.split("");
-    var hiddenWordArray = word.split("").map((letter) => "_");
+  // Add event listener to stop propagation for email input
+  var emailInput = document.getElementById("email");
+  emailInput.addEventListener("keydown", function (event) {
+    event.stopPropagation();
+  });
 
-    var incorrectLetters = [];
+  var gameDiv = document.getElementById("game");
 
-    var hangmanParts = [
-      "head",
-      "body",
-      "left-arm",
-      "right-arm",
-      "left-leg",
-      "right-leg",
-    ];
+  var words = [];
+  fetch("words.json")
+    .then((response) => response.json())
+    .then((data) => {
+      words = data;
 
-    var hangmanDisplay = document.getElementById("hangman");
+      var word = words[Math.floor(Math.random() * words.length)];
+      var wordArray = word.split("");
+      var hiddenWordArray = word.split("").map((letter) => "_");
 
-    var underscoreDisplay = document.getElementById("underscore");
-    underscoreDisplay.textContent = hiddenWordArray.join(" ");
+      var incorrectLetters = [];
 
-    var incorrectDisplay = document.getElementById("incorrectLetters");
+      var hangmanParts = [
+        "head",
+        "body",
+        "left-arm",
+        "right-arm",
+        "left-leg",
+        "right-leg",
+      ];
 
-    var modal = document.getElementById("modal");
-    var modalMessage = document.getElementById("modalMessage");
+      var hangmanDisplay = document.getElementById("hangman");
 
-    function guessLetter(guessedLetter) {
-      if (wordArray.includes(guessedLetter)) {
-        wordArray.forEach(function (letter, index) {
-          if (letter === guessedLetter) {
-            hiddenWordArray[index] = guessedLetter;
+      var underscoreDisplay = document.getElementById("underscore");
+      underscoreDisplay.textContent = hiddenWordArray.join(" ");
+
+      var incorrectDisplay = document.getElementById("incorrectLetters");
+
+      var modal = document.getElementById("modal");
+      var modalMessage = document.getElementById("modalMessage");
+
+      function guessLetter(guessedLetter) {
+        if (wordArray.includes(guessedLetter)) {
+          wordArray.forEach(function (letter, index) {
+            if (letter === guessedLetter) {
+              hiddenWordArray[index] = guessedLetter;
+            }
+          });
+        } else {
+          if (!incorrectLetters.includes(guessedLetter)) {
+            incorrectLetters.push(guessedLetter);
+            if (incorrectLetters.length <= hangmanParts.length) {
+              document.getElementById(
+                hangmanParts[incorrectLetters.length - 1]
+              ).style.display = "inline";
+            }
+            incorrectDisplay.textContent =
+              "Lettres incorrectes: " + incorrectLetters.join(", ");
           }
-        });
-      } else {
-        if (!incorrectLetters.includes(guessedLetter)) {
-          incorrectLetters.push(guessedLetter);
-          if (incorrectLetters.length <= hangmanParts.length) {
-            document.getElementById(
-              hangmanParts[incorrectLetters.length - 1]
-            ).style.display = "inline";
-          }
-          incorrectDisplay.textContent =
-            "Lettres incorrectes: " + incorrectLetters.join(", ");
+        }
+
+        underscoreDisplay.textContent = hiddenWordArray.join(" ");
+
+        if (hiddenWordArray.join("") === word) {
+          modalMessage.textContent =
+            "Félicitations! Vous avez gagné! Vous avez bien deviné le mot : " +
+            word +
+            ".";
+          modal.style.display = "block";
+        }
+
+        if (incorrectLetters.length === hangmanParts.length) {
+          modalMessage.textContent =
+            "Vous avez perdu ! Le mot était : " + word + ".";
+          modal.style.display = "block";
         }
       }
 
-      underscoreDisplay.textContent = hiddenWordArray.join(" ");
-
-      if (hiddenWordArray.join("") === word) {
-        modalMessage.textContent =
-          "Félicitations! Vous avez gagné! Vous avez bien deviné le mot : " +
-          word +
-          ".";
-        modal.style.display = "block";
-      }
-
-      if (incorrectLetters.length === hangmanParts.length) {
-        modalMessage.textContent =
-          "Vous avez perdu ! Le mot était : " + word + ".";
-        modal.style.display = "block";
-      }
-    }
-
-    window.addEventListener("keydown", function (event) {
-      var key = event.key.toLowerCase();
-      if (key.length === 1 && key.match(/[a-z]/i)) {
-        guessLetter(key);
-      }
-    });
-
-    const buttons = document.querySelectorAll(".keyboard-button");
-    buttons.forEach((button) => {
-      button.addEventListener("click", function () {
-        guessLetter(this.value);
+      window.addEventListener("keydown", function (event) {
+        var key = event.key.toLowerCase();
+        if (key.length === 1 && key.match(/[a-z]/i)) {
+          guessLetter(key);
+        }
       });
-    });
 
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      const azertyKeyboard = document.getElementById("azerty-keyboard");
-      if (azertyKeyboard) azertyKeyboard.style.display = "flex";
-    }
+      const buttons = document.querySelectorAll(".keyboard-button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          guessLetter(this.value);
+        });
+      });
 
-    var solitaireLink = document.getElementById("solitaireLink");
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        const azertyKeyboard = document.getElementById("azerty-keyboard");
+        if (azertyKeyboard) azertyKeyboard.style.display = "flex";
+      }
 
-    // Example action for the new button: navigate to a different URL
-    solitaireLink.addEventListener("click", function () {
-      window.location.href = "https://jeuxvirtuels.com";
-    });
-    solitaireLink.addEventListener("touchend", function () {
-      window.location.href = "https://jeuxvirtuels.com";
-    });
+      var solitaireLink = document.getElementById("solitaireLink");
 
-    // Set z-index for the new button similar to the restart button for consistent styling
-    solitaireLink.style.zIndex = 9998;
+      // Example action for the new button: navigate to a different URL
+      solitaireLink.addEventListener("click", function () {
+        window.location.href = "https://jeuxvirtuels.com";
+      });
+      solitaireLink.addEventListener("touchend", function () {
+        window.location.href = "https://jeuxvirtuels.com";
+      });
 
-    var restartButton = document.getElementById("restartButton");
-    // Set the z-index of the restartButton to a high value
-    restartButton.style.zIndex = 9999;
+      // Set z-index for the new button similar to the restart button for consistent styling
+      solitaireLink.style.zIndex = 9998;
 
-    restartButton.addEventListener("click", function () {
-      location.reload();
-    });
-    restartButton.addEventListener("touchend", function () {
-      location.reload();
-    });
-  })
-  .catch((error) => console.error("Error:", error));
+      restartButton.addEventListener("touchend", function () {
+        location.reload();
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+});

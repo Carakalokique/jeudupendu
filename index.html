@@ -3,10 +3,11 @@
   <head>
     <!-- Google tag (gtag.js) -->
     <script
+      defer
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3"
     ></script>
-    <script>
+    <script defer>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -19,7 +20,22 @@
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909"
       crossorigin="anonymous"
+      defer
     ></script>
+    <script src="YourGameScript.js" defer></script>
+    <script src="main.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var restartButton = document.getElementById("restartButton");
+        // Set the z-index of the restartButton to a high value
+        restartButton.style.zIndex = 9999;
+
+        restartButton.addEventListener("click", function () {
+          location.reload();
+        });
+      });
+    </script>
+
     <link rel="icon" type="image/png" href="favicon.png" />
 
     <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
@@ -42,9 +58,11 @@
         <div id="modal" class="modal">
           <div class="modal-content">
             <p id="modalMessage" style="color: #29b6f6"></p>
-            <button id="restartButton">Recommencer</button>
-            <p style="color: #f15a29"><b>OU</b></p>
-            <button id="solitaireLink">Jouer à d'autres jeux</button>
+            <button>PARTAGEZ VOTRE OPINION</button>
+
+            <p style="color: #f15a29">
+              <a id="restartButton">Recommencer</a>
+            </p>
           </div>
         </div>
         <svg id="hangman" width="200" height="200" style="display: inline">
@@ -188,11 +206,61 @@
           </div>
         </div>
       </div>
-
       <div class="column"></div>
     </div>
+
+    <section class="subscribe">
+      <p class="subscribe-text">Enscrivez vous pour le prout</p>
+      <form
+        action="https://app.convertkit.com/forms/6651832/subscriptions"
+        class="seva-form formkit-form"
+        method="post"
+        data-sv-form="6651832"
+        data-uid="f77886e4ca"
+        data-format="inline"
+        data-version="5"
+        data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+        min-width="400 500 600 700 800"
+      >
+        <div data-style="clean">
+          <ul
+            class="formkit-alert formkit-alert-error"
+            data-element="errors"
+            data-group="alert"
+          ></ul>
+          <div
+            data-element="fields"
+            data-stacked="false"
+            class="seva-fields formkit-fields"
+          >
+            <div class="formkit-field">
+              <input
+                class="formkit-input"
+                id="email"
+                name="email_address"
+                aria-label="Email Address"
+                placeholder="Email Address"
+                required=""
+                type="email"
+              />
+            </div>
+            <button data-element="submit" class="formkit-submit formkit-submit">
+              <div class="formkit-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+              <span>Subscribe</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </section>
+
     <div class="content">
-      <h1>Jeu du Pendu: Jouez au Jeu du Pendu en Ligne et Gratuit</h1>
+      <h1 class="titleh1">
+        Jeu du Pendu: Jouez au Jeu du Pendu en Ligne et Gratuit
+      </h1>
       <p>
         Jouez au Jeu du Pendu en Ligne et Gratuit. Défiez-vous avec plus de
         10000 mots en aléatoires.
@@ -209,14 +277,16 @@
       <p>
         Nous mettons régulièrement à jour notre site en fonction des
         commentaires des utilisateurs. N'hésitez pas à nous contacter à
-        <a href="mailto:contact@jeudupendu.com" style="color: #333333"
+        <a class="link" href="mailto:contact@jeudupendu.com"
           >contact@jeudupendu.com</a
         >
         si vous avez des commentaires ou des questions. La dernière mise à jour
         a eu lieu le 10 mai 2024. Amusez-vous bien !
       </p>
 
-      <h2>Quelles sont les règles du jeu du pendu ? Comment y joue-t-on ?</h2>
+      <h2 class="titleh2">
+        Quelles sont les règles du jeu du pendu ? Comment y joue-t-on ?
+      </h2>
       <p>
         Le jeu du pendu se joue généralement à deux personnes, bien qu'il existe
         des variantes en ligne avec plus de joueurs et des thèmes spécifiques.
@@ -249,12 +319,14 @@
         ainsi des variantes supplémentaires au jeu traditionnel.
       </p>
 
-      <h2>Quel est le mot le plus difficile au jeu du pendu ?</h2>
+      <h2 class="titleh2">
+        Quel est le mot le plus difficile au jeu du pendu ?
+      </h2>
       <p>
         Bien que l'on puisse penser que les
         <a
+          class="link"
           href="https://www.jeudupendu.com/pendu-mot-difficile-complique/"
-          style="color: #333333"
         >
           mots longs et complexes
         </a>
@@ -278,7 +350,7 @@
         en évidence le caractère éducatif et divertissant du pendu.
       </p>
 
-      <h2>Comment gagne-t-on au Jeu du Pendu ?</h2>
+      <h2 class="titleh2">Comment gagne-t-on au Jeu du Pendu ?</h2>
       <ol>
         <li>
           Commencez par les lettres les plus fréquentes : En français, certaines
@@ -348,20 +420,7 @@
             <a href="mailto:contact@jeudupendu.com">Email</a>
           </p>
         </div>
-        <!-- <div>
-          <h3>URLS 3</h3>
-          <p>
-            <a href="./">Test url</a>
-          </p>
-          <p>
-            <a href="./">Test url</a>
-          </p>
-          <p>
-            <a href="./">Test url</a>
-          </p>
-        </div> -->
       </div>
     </footer>
-    <script src="YourGameScript.js"></script>
   </body>
 </html>
