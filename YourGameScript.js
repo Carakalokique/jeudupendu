@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   var restartButton = document.getElementById("restartButton");
-  // Set the z-index of the restartButton to a high value
   restartButton.style.zIndex = 9999;
 
   restartButton.addEventListener("click", function () {
@@ -43,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var incorrectDisplay = document.getElementById("incorrectLetters");
 
-      var modal = document.getElementById("modal");
+      var modalButton = document.getElementById("modalButton");
       var modalMessage = document.getElementById("modalMessage");
 
       function guessLetter(guessedLetter) {
@@ -102,22 +101,62 @@ document.addEventListener("DOMContentLoaded", function () {
         if (azertyKeyboard) azertyKeyboard.style.display = "flex";
       }
 
-      var solitaireLink = document.getElementById("solitaireLink");
-
-      // Example action for the new button: navigate to a different URL
-      solitaireLink.addEventListener("click", function () {
-        window.location.href = "https://jeuxvirtuels.com";
+      modalButton.addEventListener("click", function () {
+        window.location.href = "https://tally.so/r/wbkxEL";
       });
-      solitaireLink.addEventListener("touchend", function () {
-        window.location.href = "https://jeuxvirtuels.com";
+      modalButton.addEventListener("touchend", function () {
+        window.location.href = "https://tally.so/r/wbkxEL";
       });
 
-      // Set z-index for the new button similar to the restart button for consistent styling
-      solitaireLink.style.zIndex = 9998;
+      modalButton.style.zIndex = 9998;
 
       restartButton.addEventListener("touchend", function () {
         location.reload();
       });
     })
     .catch((error) => console.error("Error:", error));
+
+  // Function to check query parameters
+  function getQueryParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const queryArray = queryString.split("&");
+    for (const query of queryArray) {
+      const [key, value] = query.split("=");
+      params[key] = value;
+    }
+    return params;
+  }
+
+  // Function to remove query parameters
+  function removeQueryParams() {
+    const url = new URL(window.location);
+    url.searchParams.delete("subscribed");
+    url.searchParams.delete("tally");
+    window.history.replaceState({}, document.title, url.pathname);
+  }
+
+  // Check for the 'subscribed' and 'tally' query parameters
+  const queryParams = getQueryParams();
+  if (queryParams.subscribed === "true") {
+    var subscriptionModal = document.getElementById("subscriptionModal");
+    subscriptionModal.style.display = "block";
+    removeQueryParams(); // Remove the query parameter
+  } else if (queryParams.tally === "true") {
+    var tallyModal = document.getElementById("tallyModal");
+    tallyModal.style.display = "block";
+    removeQueryParams(); // Remove the query parameter
+  }
+
+  var subscriptionModalButton = document.getElementById(
+    "subscriptionModalButton"
+  );
+  subscriptionModalButton.addEventListener("click", function () {
+    location.reload();
+  });
+
+  var tallyModalButton = document.getElementById("tallyModalButton");
+  tallyModalButton.addEventListener("click", function () {
+    location.reload();
+  });
 });
