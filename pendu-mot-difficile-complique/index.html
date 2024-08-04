@@ -1,340 +1,223 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      defer
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3"
-    ></script>
-    <script defer>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
 
-      gtag("config", "G-QGWR4RGCR3");
-    </script>
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909"
-      crossorigin="anonymous"
-      defer
-    ></script>
-    <script src="YourGameScriptDifficiles.js" defer></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var restartButton = document.getElementById("restartButton");
-        // Set the z-index of the restartButton to a high value
-        restartButton.style.zIndex = 9999;
+<head>
+  <link rel="canonical" href="https://www.jeudupendu.com/pendu-mot-difficile-complique/">
+  <!-- Google tag (gtag.js) -->
+  <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3"></script>
+  <script defer>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-        restartButton.addEventListener("click", function () {
-          location.reload();
-        });
+    gtag("config", "G-QGWR4RGCR3");
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909"
+    crossorigin="anonymous" defer></script>
+  <script src="YourGameScriptDifficiles.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var restartButton = document.getElementById("restartButton");
+      // Set the z-index of the restartButton to a high value
+      restartButton.style.zIndex = 9999;
+
+      restartButton.addEventListener("click", function () {
+        location.reload();
       });
-    </script>
+    });
+  </script>
 
-    <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="icon" type="image/png" href="favicon.png" />
 
-    <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Jouez au jeu du Pendu et trouvez le mot caché. Devinez les lettres et amusez-vous en testant votre vocabulaire. Plus de 10,000 mots à découvrir!"
-    />
+  <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Vous trouverez les 10 000 mots les plus durs à trouver au Jeu du Pendu. Utilisez-les contre vos adversaires et vous serez sûr de gagner !" />
 
-    <title>Jeu du Pendu en Ligne et Gratuit</title>
+  <title>
+    Les mots les plus difficiles et compliqués au Jeu du Pendu en Ligne
+  </title>
 
-    <link rel="stylesheet" type="text/css" href="../style.css" />
-  </head>
-  <body>
-    <div class="header">Jeu du Pendu</div>
-    <div id="game">
-      <div class="column"></div>
-      <div class="column">
-        <div id="modal" class="modal">
-          <div class="modal-content">
-            <p id="modalMessage" style="color: #29b6f6"></p>
-            <button id="modalButton">PARTAGEZ VOTRE OPINION</button>
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
 
-            <p style="color: #f15a29">
-              <a id="restartButton">Recommencer</a>
-            </p>
-          </div>
-        </div>
-        <div id="subscriptionModal" class="modal">
-          <div class="modal-content">
-            <p id="subscriptionModalMessage" style="color: #29b6f6">
-              Merci de vous être inscrit.
-            </p>
-            <button id="subscriptionModalButton">Continuer à jouer</button>
-          </div>
-        </div>
-        <div id="tallyModal" class="modal" style="display: none">
-          <div class="modal-content">
-            <p id="tallyModalMessage" style="color: #29b6f6">
-              Merci pour vos réponses.
-            </p>
-            <button id="tallyModalButton">Continuer à jouer</button>
-          </div>
-        </div>
-        <svg id="hangman" width="200" height="200" style="display: inline">
-          <line
-            id="ground-part-structure"
-            x1="0"
-            y1="199"
-            x2="120"
-            y2="199"
-            stroke="white"
-            stroke-width="3"
-          />
-          <line
-            id="main-part-structure"
-            x1="30"
-            y1="0"
-            x2="30"
-            y2="200"
-            stroke="white"
-            stroke-width="4"
-          />
-          <line
-            id="top-part-structure"
-            x1="30"
-            y1="2"
-            x2="130"
-            y2="2"
-            stroke="white"
-            stroke-width="4"
-          />
-          <line
-            id="rope"
-            x1="130"
-            y1="20"
-            x2="130"
-            y2="0"
-            stroke="white"
-            stroke-width="2"
-          />
-          <circle
-            id="head"
-            cx="130"
-            cy="50"
-            r="30"
-            style="display: none"
-            stroke="white"
-            stroke-width="3"
-            fill="transparent"
-          />
-          <line
-            id="body"
-            x1="130"
-            y1="80"
-            x2="130"
-            y2="130"
-            style="display: none"
-            stroke="white"
-            stroke-width="3"
-          />
-          <line
-            id="left-arm"
-            x1="130"
-            y1="90"
-            x2="100"
-            y2="120"
-            style="display: none"
-            stroke="white"
-            stroke-width="3"
-          />
-          <line
-            id="right-arm"
-            x1="130"
-            y1="90"
-            x2="160"
-            y2="120"
-            style="display: none"
-            stroke="white"
-            stroke-width="3"
-          />
-          <line
-            id="left-leg"
-            x1="130"
-            y1="130"
-            x2="100"
-            y2="170"
-            style="display: none"
-            stroke="white"
-            stroke-width="3"
-          />
-          <line
-            id="right-leg"
-            x1="130"
-            y1="130"
-            x2="160"
-            y2="170"
-            style="display: none"
-            stroke="white"
-            stroke-width="3"
-          />
-        </svg>
-        <p id="underscore"></p>
-        <p class="incorrectLetters" id="incorrectLetters"></p>
-        <div class="keyboard">
-          <div class="keyboard-row">
-            <button class="keyboard-button" value="a">A</button>
-            <button class="keyboard-button" value="z">Z</button>
-            <button class="keyboard-button" value="e">E</button>
-            <button class="keyboard-button" value="r">R</button>
-            <button class="keyboard-button" value="t">T</button>
-            <button class="keyboard-button" value="y">Y</button>
-            <button class="keyboard-button" value="u">U</button>
-            <button
-              class="keyboard-button"
-              value="i"
-              style="padding-left: 0.5em; padding-right: 0.5em"
-            >
-              I
-            </button>
-            <button class="keyboard-button" value="o">O</button>
-            <button class="keyboard-button" value="p">P</button>
-          </div>
-          <div class="keyboard-row">
-            <button class="keyboard-button" value="q">Q</button>
-            <button class="keyboard-button" value="s">S</button>
-            <button class="keyboard-button" value="d">D</button>
-            <button class="keyboard-button" value="f">F</button>
-            <button class="keyboard-button" value="g">G</button>
-            <button class="keyboard-button" value="h">H</button>
-            <button class="keyboard-button" value="j">J</button>
-            <button class="keyboard-button" value="k">K</button>
-            <button class="keyboard-button" value="l">L</button>
-            <button class="keyboard-button" value="m">M</button>
-          </div>
-          <div class="keyboard-row">
-            <button class="keyboard-button" value="w">W</button>
-            <button class="keyboard-button" value="x">X</button>
-            <button class="keyboard-button" value="c">C</button>
-            <button class="keyboard-button" value="v">V</button>
-            <button class="keyboard-button" value="b">B</button>
-            <button class="keyboard-button" value="n">N</button>
-          </div>
+<body>
+  <div class="header">Jeu du Pendu</div>
+  <div id="game">
+    <div class="column"></div>
+    <div class="column">
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <p id="modalMessage" style="color: #29b6f6"></p>
+          <button id="modalButton">PARTAGEZ VOTRE OPINION</button>
+
+          <p style="color: #f15a29">
+            <a id="restartButton">Recommencer</a>
+          </p>
         </div>
       </div>
-      <div class="column"></div>
+      <div id="subscriptionModal" class="modal">
+        <div class="modal-content">
+          <p id="subscriptionModalMessage" style="color: #29b6f6">
+            Merci de vous être inscrit.
+          </p>
+          <button id="subscriptionModalButton">Continuer à jouer</button>
+        </div>
+      </div>
+      <div id="tallyModal" class="modal" style="display: none">
+        <div class="modal-content">
+          <p id="tallyModalMessage" style="color: #29b6f6">
+            Merci pour vos réponses.
+          </p>
+          <button id="tallyModalButton">Continuer à jouer</button>
+        </div>
+      </div>
+      <svg id="hangman" width="200" height="200" style="display: inline">
+        <line id="ground-part-structure" x1="0" y1="199" x2="120" y2="199" stroke="white" stroke-width="3" />
+        <line id="main-part-structure" x1="30" y1="0" x2="30" y2="200" stroke="white" stroke-width="4" />
+        <line id="top-part-structure" x1="30" y1="2" x2="130" y2="2" stroke="white" stroke-width="4" />
+        <line id="rope" x1="130" y1="20" x2="130" y2="0" stroke="white" stroke-width="2" />
+        <circle id="head" cx="130" cy="50" r="30" style="display: none" stroke="white" stroke-width="3"
+          fill="transparent" />
+        <line id="body" x1="130" y1="80" x2="130" y2="130" style="display: none" stroke="white" stroke-width="3" />
+        <line id="left-arm" x1="130" y1="90" x2="100" y2="120" style="display: none" stroke="white" stroke-width="3" />
+        <line id="right-arm" x1="130" y1="90" x2="160" y2="120" style="display: none" stroke="white" stroke-width="3" />
+        <line id="left-leg" x1="130" y1="130" x2="100" y2="170" style="display: none" stroke="white" stroke-width="3" />
+        <line id="right-leg" x1="130" y1="130" x2="160" y2="170" style="display: none" stroke="white"
+          stroke-width="3" />
+      </svg>
+      <p id="underscore"></p>
+      <p class="incorrectLetters" id="incorrectLetters"></p>
+      <div class="keyboard">
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="a">A</button>
+          <button class="keyboard-button" value="z">Z</button>
+          <button class="keyboard-button" value="e">E</button>
+          <button class="keyboard-button" value="r">R</button>
+          <button class="keyboard-button" value="t">T</button>
+          <button class="keyboard-button" value="y">Y</button>
+          <button class="keyboard-button" value="u">U</button>
+          <button class="keyboard-button" value="i" style="padding-left: 0.5em; padding-right: 0.5em">
+            I
+          </button>
+          <button class="keyboard-button" value="o">O</button>
+          <button class="keyboard-button" value="p">P</button>
+        </div>
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="q">Q</button>
+          <button class="keyboard-button" value="s">S</button>
+          <button class="keyboard-button" value="d">D</button>
+          <button class="keyboard-button" value="f">F</button>
+          <button class="keyboard-button" value="g">G</button>
+          <button class="keyboard-button" value="h">H</button>
+          <button class="keyboard-button" value="j">J</button>
+          <button class="keyboard-button" value="k">K</button>
+          <button class="keyboard-button" value="l">L</button>
+          <button class="keyboard-button" value="m">M</button>
+        </div>
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="w">W</button>
+          <button class="keyboard-button" value="x">X</button>
+          <button class="keyboard-button" value="c">C</button>
+          <button class="keyboard-button" value="v">V</button>
+          <button class="keyboard-button" value="b">B</button>
+          <button class="keyboard-button" value="n">N</button>
+        </div>
+      </div>
     </div>
+    <div class="column"></div>
+  </div>
 
-    <section class="subscribe">
-      <p class="subscribe-text">
-        Inscrivez vous être tenu au courant des dernières mises à jour du jeu du
-        pendu et des nouveaux jeux que je développe.
-      </p>
-      <form
-        action="https://app.convertkit.com/forms/6651832/subscriptions"
-        class="seva-form formkit-form"
-        method="post"
-        data-sv-form="6651832"
-        data-uid="f77886e4ca"
-        data-format="inline"
-        data-version="5"
-        data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"","redirect_url":"https://jeudupendu.com/?subscribed=true"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
-        min-width="400 500 600 700 800"
-      >
-        <div data-style="clean">
-          <ul
-            class="formkit-alert formkit-alert-error"
-            data-element="errors"
-            data-group="alert"
-          ></ul>
-          <div
-            data-element="fields"
-            data-stacked="false"
-            class="seva-fields formkit-fields"
-          >
-            <div class="formkit-field">
-              <input
-                class="formkit-input"
-                id="email"
-                name="email_address"
-                aria-label="Email Address"
-                placeholder="Adresse Email"
-                required=""
-                type="email"
-              />
+  <section class="subscribe">
+    <p class="subscribe-text">
+      Inscrivez vous pour être tenu au courant des dernières mises à jour du
+      jeu du pendu et des nouveaux jeux que je développe.
+    </p>
+    <form action="https://app.convertkit.com/forms/6651832/subscriptions" class="seva-form formkit-form" method="post"
+      data-sv-form="6651832" data-uid="f77886e4ca" data-format="inline" data-version="5"
+      data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"","redirect_url":"https://jeudupendu.com/?subscribed=true"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+      min-width="400 500 600 700 800">
+      <div data-style="clean">
+        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+          <div class="formkit-field">
+            <input class="formkit-input" id="email" name="email_address" aria-label="Email Address"
+              placeholder="Adresse Email" required="" type="email" />
+          </div>
+          <button data-element="submit" class="formkit-submit formkit-submit">
+            <div class="formkit-spinner">
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
-            <button data-element="submit" class="formkit-submit formkit-submit">
-              <div class="formkit-spinner">
-                <div></div>
-                <div></div>
-                <div></div>
-              </div>
-              <span>Envoyer</span>
-            </button>
-          </div>
-        </div>
-      </form>
-    </section>
-
-    <div class="content">
-      <h1 class="titleh1">
-        Les mots les plus difficiles et compliqués au Jeu du Pendu en Ligne et
-        Gratuit
-      </h1>
-      <p>
-        Cetter version du pendu est la plus compliqués que vous trouverez sur
-        internet. Elle est composé des 10.000 mots les plus difficiles à trouver
-        de la langue française. Oseriez-vous relever le défi?
-      </p>
-      <p>
-        C'est toujours le jeu classique du pendu avec un maximum de 6 essais
-        pour trouver le mot. Cependant la difficulté est maintenant maximale !
-      </p>
-      <p>
-        Nous avons gardé le gameplay original et le style de ce classique
-        intemporel, et avons amélioré ses graphiques et fonctionnalités. Gardez
-        votre esprit vif et détendez-vous en jouant à ce jeu du pendu classique.
-      </p>
-      <p>
-        Si vous avez des commentaires ou des retours, n'hésitez pas à me
-        contacter à
-        <a class="link" href="mailto:contact@jeudupendu.com"
-          >contact@jeudupendu.com</a
-        >. Bon courage !
-      </p>
-
-      <h2 class="titleh2">
-        Quel est le mot le plus difficile au jeu du pendu ?
-      </h2>
-      <p>
-        La question est plutôt : quels sont les mots les plus difficiles pour
-        que vous puissiez gagner à chaque partie contre votre adversaire ? Jouez
-        à cette version du pendu, et vous découvrirez les mots les plus
-        compliqués et difficiles de la langue française, qui vous apporteront
-        des victoires garanties.
-      </p>
-    </div>
-
-    <footer>
-      <div class="container">
-        <div>
-          <h3>Autres Jeux</h3>
-          <p>
-            <a href="https://jeudusudoku.com/">Sudoku</a>
-          </p>
-          <p>
-            <a href="https://www.lejeudusolitaire.com/">Solitaire</a>
-          </p>
-          <p>
-            <a href="https://lejeudesociete.com/">Le Jeu de Société</a>
-          </p>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <p>
-            <a href="mailto:contact@jeudupendu.com">Email</a>
-          </p>
+            <span>Envoyer</span>
+          </button>
         </div>
       </div>
-    </footer>
-  </body>
+    </form>
+  </section>
+
+  <div class="content">
+    <h1 class="titleh1">
+      Les mots les plus difficiles et compliqués au Jeu du Pendu
+    </h1>
+    <p>
+      Cetter version du pendu est la plus compliqués que vous trouverez sur
+      internet. Elle est composé des 10.000 mots les plus difficiles à trouver
+      de la langue française. Oseriez-vous relever le défi?
+    </p>
+    <p>
+      C'est toujours le jeu classique du pendu avec un maximum de 6 essais
+      pour trouver le mot. Cependant la difficulté est maintenant maximale !
+    </p>
+    <p>
+      Nous avons gardé le gameplay original et le style de ce classique
+      intemporel, et avons amélioré ses graphiques et fonctionnalités. Gardez
+      votre esprit vif et détendez-vous en jouant à ce jeu du pendu classique.
+    </p>
+    <p>
+      Si vous avez des commentaires ou des retours, n'hésitez pas à me
+      contacter à
+      <a class="link" href="mailto:contact@jeudupendu.com">contact@jeudupendu.com</a>. Bon courage !
+    </p>
+
+    <h2 class="titleh2">
+      Quel est le mot le plus difficile au jeu du pendu ?
+    </h2>
+    <p>
+      La question est plutôt : quels sont les mots les plus difficiles pour
+      que vous puissiez gagner à chaque partie contre votre adversaire ? Jouez
+      à cette version du pendu, et vous découvrirez les mots les plus
+      compliqués et difficiles de la langue française, qui vous apporteront
+      des victoires garanties.
+    </p>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div>
+        <h3>Autres Jeux</h3>
+        <p>
+          <a href="https://jeudusudoku.com/">Sudoku</a>
+        </p>
+        <p>
+          <a href="https://www.lejeudusolitaire.com/">Solitaire</a>
+        </p>
+        <p>
+          <a href="https://lejeudesociete.com/">Le Jeu de Société</a>
+        </p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>
+          <a href="mailto:contact@jeudupendu.com">Email</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>

@@ -90,6 +90,11 @@ a.linkRestart {
   color: #f15a29;
 }
 
+.contentsubscribe {
+  margin: 0 10px;
+  padding: 0 20px;
+}
+
 a {
   color: #1677be;
   text-decoration: underline;
