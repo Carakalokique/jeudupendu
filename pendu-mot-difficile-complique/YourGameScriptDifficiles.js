@@ -102,10 +102,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       modalButton.addEventListener("click", function () {
-        window.location.href = "https://tally.so/r/wbkxEL";
+        window.location.href = "https://jeuxvirtuels.com/?ref=jeudupendu.com";
       });
       modalButton.addEventListener("touchend", function () {
-        window.location.href = "https://tally.so/r/wbkxEL";
+        window.location.href = "https://jeuxvirtuels.com/?ref=jeudupendu.com";
       });
 
       modalButton.style.zIndex = 9998;
