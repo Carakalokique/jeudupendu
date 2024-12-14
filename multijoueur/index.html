@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="canonical" href="https://www.jeudupendu.com/multijoueur/">
+  <!-- Google tag (gtag.js) -->
+  <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3"></script>
+  <script defer>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-QGWR4RGCR3");
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909"
+    crossorigin="anonymous" defer></script>
+  <script src="YourGameScriptMultijoueur.js" defer></script>
+
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jouez au Jeu du Pendu en multijoueur. Défiez vos amis en choisissant des mots à tour de rôle!" />
+  <title>Jeu du Pendu Multijoueur</title>
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+
+<body>
+  <div class="header">Jeu du Pendu Multijoueur</div>
+  <div id="game">
+    <div class="column"></div>
+    <div class="column">
+      <!-- Player Input Modal -->
+      <div id="playerInputModal" class="modal">
+        <div class="modal-content">
+          <p id="playerInputMessage" style="color: #29b6f6">
+            Joueur 1, c'est à vous de jouer.
+          </p>
+          <input type="text" id="wordInput" placeholder="Entrez le mot à deviner"/>
+          <button id="confirmWordButton">CONFIRMER LE MOT</button>
+        <p style="color: #29b6f6">N'utilisez pas d'accents, d'espaces ou de traits d'union.</p>
+        </div>
+      </div>
+
+      <!-- Game Over Modal -->
+      <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+          <p id="gameOverMessage" style="color: #29b6f6"></p>
+          <input type="text" id="nextWordInput" placeholder="Entrez le prochain mot" />
+          <button id="nextWordButton">CONFIRMER LE MOT</button>
+
+          <p style="color: #f15a29">
+            <a href="https://jeuxvirtuels.com/?ref=jeudupendu.com">JOUER À D'AUTRES JEUX</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Hangman SVG -->
+      <svg id="hangman" width="200" height="200" style="display: inline">
+        <line id="ground-part-structure" x1="0" y1="199" x2="120" y2="199" stroke="white" stroke-width="3" />
+        <line id="main-part-structure" x1="30" y1="0" x2="30" y2="200" stroke="white" stroke-width="4" />
+        <line id="top-part-structure" x1="30" y1="2" x2="130" y2="2" stroke="white" stroke-width="4" />
+        <line id="rope" x1="130" y1="20" x2="130" y2="0" stroke="white" stroke-width="2" />
+        <circle id="head" cx="130" cy="50" r="30" style="display: none" stroke="white" stroke-width="3" fill="transparent" />
+        <line id="body" x1="130" y1="80" x2="130" y2="130" style="display: none" stroke="white" stroke-width="3" />
+        <line id="left-arm" x1="130" y1="90" x2="100" y2="120" style="display: none" stroke="white" stroke-width="3" />
+        <line id="right-arm" x1="130" y1="90" x2="160" y2="120" style="display: none" stroke="white" stroke-width="3" />
+        <line id="left-leg" x1="130" y1="130" x2="100" y2="170" style="display: none" stroke="white" stroke-width="3" />
+        <line id="right-leg" x1="130" y1="130" x2="160" y2="170" style="display: none" stroke="white" stroke-width="3" />
+      </svg>
+
+      <p id="underscore"></p>
+      <p class="incorrectLetters" id="incorrectLetters"></p>
+
+      <!-- Keyboard -->
+      <div class="keyboard">
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="a">A</button>
+          <button class="keyboard-button" value="z">Z</button>
+          <button class="keyboard-button" value="e">E</button>
+          <button class="keyboard-button" value="r">R</button>
+          <button class="keyboard-button" value="t">T</button>
+          <button class="keyboard-button" value="y">Y</button>
+          <button class="keyboard-button" value="u">U</button>
+          <button class="keyboard-button" value="i">I</button>
+          <button class="keyboard-button" value="o">O</button>
+          <button class="keyboard-button" value="p">P</button>
+        </div>
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="q">Q</button>
+          <button class="keyboard-button" value="s">S</button>
+          <button class="keyboard-button" value="d">D</button>
+          <button class="keyboard-button" value="f">F</button>
+          <button class="keyboard-button" value="g">G</button>
+          <button class="keyboard-button" value="h">H</button>
+          <button class="keyboard-button" value="j">J</button>
+          <button class="keyboard-button" value="k">K</button>
+          <button class="keyboard-button" value="l">L</button>
+          <button class="keyboard-button" value="m">M</button>
+        </div>
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="w">W</button>
+          <button class="keyboard-button" value="x">X</button>
+          <button class="keyboard-button" value="c">C</button>
+          <button class="keyboard-button" value="v">V</button>
+          <button class="keyboard-button" value="b">B</button>
+          <button class="keyboard-button" value="n">N</button>
+        </div>
+      </div>
+    </div>
+    <div class="column"></div>
+  </div>
+
+  <div class="content">
+    <h1 class="titleh1">Jouez au Jeu du Pendu Multijoueur</h1>
+    <p>
+      Défiez vos amis dans cette version multijoueur du Jeu du Pendu ! À tour de rôle, choisissez un mot et tentez de deviner celui de votre adversaire.
+    </p>
+    <p>
+      Les règles restent les mêmes : vous avez 6 essais pour deviner le mot. Chaque erreur fait apparaître une partie du pendu.
+    </p>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div>
+        <h3>Autres Jeux</h3>
+        <p><a href="https://jeudusudoku.com/">Sudoku</a></p>
+        <p><a href="https://www.lejeudusolitaire.com/">Solitaire</a></p>
+        <p><a href="https://lejeudesociete.com/">Le Jeu de Société</a></p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href="mailto:contact@jeudupendu.com">Email</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
