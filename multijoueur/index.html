@@ -110,7 +110,34 @@
     </div>
     <div class="column"></div>
   </div>
-
+  <section class="subscribe">
+    <p class="subscribe-text">
+      Inscrivez-vous pour être tenu au courant des dernières mises à jour du
+      jeu du pendu et des nouveaux jeux que je développe.
+    </p>
+    <form action="https://app.convertkit.com/forms/6651832/subscriptions" class="seva-form formkit-form" method="post"
+      data-sv-form="6651832" data-uid="f77886e4ca" data-format="inline" data-version="5"
+      data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"","redirect_url":"https://jeudupendu.com/?subscribed=true"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+      min-width="400 500 600 700 800">
+      <div data-style="clean">
+        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+          <div class="formkit-field">
+            <input class="formkit-input" id="email" name="email_address" aria-label="Email Address"
+              placeholder="Adresse Email" required="" type="email" />
+          </div>
+          <button data-element="submit" class="formkit-submit formkit-submit">
+            <div class="formkit-spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <span>Envoyer</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
   <div class="content">
     <h1 class="titleh1">Jouez au Jeu du Pendu Multijoueur</h1>
     <p>
@@ -175,5 +202,16 @@
       </div>
     </div>
   </footer>
+
+  <div id="subscriptionModal" class="modal">
+    <div class="modal-content">
+      <p id="subscriptionModalMessage" style="color: #29b6f6">
+        Merci de vous être inscrit.
+      </p>
+      <button id="subscriptionModalButton">Continuer à jouer</button>
+    </div>
+  </div>
+
+  
 </body>
 </html>
