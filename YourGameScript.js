@@ -155,9 +155,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     modalButton.style.zIndex = 9998;
 
-    restartButton.addEventListener("touchend", function () {
-      location.reload();
-    });
+    const restartButton = document.getElementById("restartButton");
+    if (restartButton) {
+      restartButton.addEventListener("touchend", function () {
+        location.reload();
+      });
+    }
   }
   
   // Démarrer le jeu

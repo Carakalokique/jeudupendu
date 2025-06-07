@@ -48,6 +48,12 @@ if command -v terser &> /dev/null; then
         --mangle \
         --source-map "url='YourGameScriptDifficiles.min.js.map'"
     echo "✅ YourGameScriptDifficiles.js minifié"
+    
+    # Minifier performance-monitor.js
+    terser performance-monitor.js -o build/js/performance-monitor.min.js \
+        --compress \
+        --mangle
+    echo "✅ performance-monitor.js minifié"
 else
     echo "⚠️  Terser non installé. Installez avec: npm install -g terser"
 fi
@@ -94,6 +100,7 @@ sed -i.bak 's/YourGameScript.js/js\/YourGameScript.min.js/g' build/index.html
 sed -i.bak 's/voice-commands.js/js\/voice-commands.min.js/g' build/index.html
 sed -i.bak 's/style.css/style.min.css/g' build/index.html
 sed -i.bak 's/sw.js/js\/sw.min.js/g' build/index.html
+sed -i.bak 's/performance-monitor.js/js\/performance-monitor.min.js/g' build/index.html
 
 # Supprimer les fichiers de backup
 rm build/index.html.bak
