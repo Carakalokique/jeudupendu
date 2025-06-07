@@ -2,3 +2,34 @@ jeudupendu1.jpg
 jeudupendu2.jpg
 jeudupendu3.jpg
 jeudupendu logo.png
+
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Build output (sera géré séparément pour GitHub Pages)
+build/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp

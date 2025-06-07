@@ -1,0 +1,30 @@
+{
+  "name": "jeu-du-pendu",
+  "version": "1.0.0",
+  "description": "Jeu du Pendu en ligne - Optimisé pour les performances",
+  "main": "index.html",
+  "scripts": {
+    "build": "./build-optimize.sh",
+    "serve": "npx http-server -p 8080",
+    "serve:build": "npx http-server build -p 8080",
+    "install-tools": "npm install -g terser imagemin-cli imagemin-pngquant imagemin-mozjpeg imagemin-webp",
+    "convert-webp": "for file in *.jpg *.png; do imagemin \"$file\" --plugin=webp --out-dir=build/images; done"
+  },
+  "keywords": [
+    "jeu",
+    "pendu",
+    "français",
+    "mot",
+    "vocabulaire"
+  ],
+  "author": "JeuDuPendu.com",
+  "license": "MIT",
+  "devDependencies": {
+    "terser": "^5.26.0",
+    "imagemin-cli": "^7.0.0",
+    "imagemin-pngquant": "^9.0.2",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-webp": "^8.0.0",
+    "http-server": "^14.1.1"
+  }
+} 
