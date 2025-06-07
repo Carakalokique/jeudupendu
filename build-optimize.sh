@@ -109,12 +109,14 @@ rm build/index.html.bak
 cp multijoueur/index.html build/multijoueur/index.html
 sed -i.bak 's/YourGameScriptMultijoueur.js/js\/YourGameScriptMultijoueur.min.js/g' build/multijoueur/index.html
 sed -i.bak 's/..\/style.css/..\/style.min.css/g' build/multijoueur/index.html
+sed -i.bak 's/..\/favicon.ico/..\/favicon.ico/g' build/multijoueur/index.html
 rm build/multijoueur/index.html.bak
 
 # Optimiser la page Difficile
 cp pendu-mot-difficile-complique/index.html build/pendu-mot-difficile-complique/index.html
 sed -i.bak 's/YourGameScriptDifficiles.js/js\/YourGameScriptDifficiles.min.js/g' build/pendu-mot-difficile-complique/index.html
 sed -i.bak 's/..\/style.css/..\/style.min.css/g' build/pendu-mot-difficile-complique/index.html
+sed -i.bak 's/..\/favicon.ico/..\/favicon.ico/g' build/pendu-mot-difficile-complique/index.html
 rm build/pendu-mot-difficile-complique/index.html.bak
 
 echo "✅ HTML optimisé (toutes les pages)"
@@ -127,6 +129,7 @@ cp sitemap.xml build/
 cp ads.txt build/
 cp CNAME build/
 cp .htaccess build/
+cp favicon.ico build/
 
 # Copier les fichiers JSON des pages spécialisées
 cp multijoueur/wordsplayer.json build/multijoueur/
