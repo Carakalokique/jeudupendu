@@ -101,6 +101,7 @@ sed -i.bak 's/voice-commands.js/js\/voice-commands.min.js/g' build/index.html
 sed -i.bak 's/style.css/style.min.css/g' build/index.html
 sed -i.bak 's/sw.js/js\/sw.min.js/g' build/index.html
 sed -i.bak 's/performance-monitor.js/js\/performance-monitor.min.js/g' build/index.html
+sed -i.bak 's/favicon.png/favicon.ico/g' build/index.html
 
 # Supprimer les fichiers de backup
 rm build/index.html.bak
@@ -109,14 +110,14 @@ rm build/index.html.bak
 cp multijoueur/index.html build/multijoueur/index.html
 sed -i.bak 's/YourGameScriptMultijoueur.js/js\/YourGameScriptMultijoueur.min.js/g' build/multijoueur/index.html
 sed -i.bak 's/..\/style.css/..\/style.min.css/g' build/multijoueur/index.html
-sed -i.bak 's/..\/favicon.ico/..\/favicon.ico/g' build/multijoueur/index.html
+sed -i.bak 's/..\/favicon.png/..\/favicon.ico/g' build/multijoueur/index.html
 rm build/multijoueur/index.html.bak
 
 # Optimiser la page Difficile
 cp pendu-mot-difficile-complique/index.html build/pendu-mot-difficile-complique/index.html
 sed -i.bak 's/YourGameScriptDifficiles.js/js\/YourGameScriptDifficiles.min.js/g' build/pendu-mot-difficile-complique/index.html
 sed -i.bak 's/..\/style.css/..\/style.min.css/g' build/pendu-mot-difficile-complique/index.html
-sed -i.bak 's/..\/favicon.ico/..\/favicon.ico/g' build/pendu-mot-difficile-complique/index.html
+sed -i.bak 's/favicon.png/..\/favicon.ico/g' build/pendu-mot-difficile-complique/index.html
 rm build/pendu-mot-difficile-complique/index.html.bak
 
 echo "✅ HTML optimisé (toutes les pages)"
