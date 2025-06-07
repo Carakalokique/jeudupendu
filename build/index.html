@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez le Jeu du Pendu classique en ligne - Plus de 10 000 mots à deviner! Jouez gratuitement, seul ou en multijoueur. Versions facile et difficile disponibles. Testez votre vocabulaire français maintenant!" />
+  <link rel="canonical" href="https://www.jeudupendu.com/">
+  
+  <!-- Critical CSS inline with font fallbacks -->
+  <style>
+    body{margin:0;padding:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Open Sans",sans-serif;color:#333;background-color:#fff}
+    .header{padding:20px;text-align:center;background-color:#f15a29;color:white;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Luckiest Guy",cursive,fantasy;font-size:3em}
+    #game{display:flex;flex-direction:column;justify-content:space-between;align-items:center;height:90vh;min-height:80vh;background-color:#29b6f6;color:white;font-size:2em;padding:20px}
+    .modal{display:none;position:fixed;z-index:1;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgba(0,0,0,0.4)}
+    .modal-content{background-color:#fefefe;margin:15% auto;padding:20px;border:1px solid #888;width:90%;border-radius:5px}
+    #underscore{font-size:2rem}
+    .keyboard{display:flex;justify-content:center;flex-wrap:wrap;padding:0.5em}
+    .keyboard-row{width:100%;display:flex;justify-content:center}
+    .keyboard-button{margin:0.1em;padding:0.3em;border:none;background:#f15a29;color:#fff;border-radius:5px;cursor:pointer;transition:background 0.3s ease;font-size:0.8em}
+    .keyboard-button:hover{background:#333}
+    @media screen and (min-width:768px){.modal-content{width:40%}.keyboard-row{width:60%}}
+  </style>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="style.min.css" as="style">
+  <link rel="preload" href="js/YourGameScript.min.js" as="script">
+  <link rel="preload" href="js/voice-commands.min.js" as="script">
+  <link rel="preload" href="words.json" as="fetch" crossorigin="anonymous">
+  
+  <!-- DNS prefetch for third-party domains -->
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//pagead2.googlesyndication.com">
+  <link rel="dns-prefetch" href="//analytics.google.com">
+  
+  <!-- Preconnect to critical third-party origins -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin>
+  
+  <!-- Optimized font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Load fonts async to prevent render blocking -->
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"></noscript>
+  
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap"></noscript>
+  
+  <title>Jeu du Pendu en Ligne et Gratuit</title>
+  
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="google-adsense-account" content="ca-pub-8489033221779909" />
+  
+  <!-- Load full CSS async -->
+  <link rel="stylesheet" type="text/css" href="style.min.css" />
+  
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/js/sw.min.js').then(function(registration) {
+          console.log('ServiceWorker registration successful');
+        }, function(err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
+  
+  <!-- Google Analytics - Load after critical content -->
+  <script>
+    function loadGoogleAnalytics() {
+      var gtagScript = document.createElement('script');
+      gtagScript.async = true;
+      gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QGWR4RGCR3';
+      document.head.appendChild(gtagScript);
+      
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-QGWR4RGCR3");
+    }
+    
+    // Load GA after interaction or 4 seconds
+    function startAnalytics() {
+      loadGoogleAnalytics();
+      // Remove listeners after first load
+      window.removeEventListener('scroll', startAnalytics);
+      window.removeEventListener('click', startAnalytics);
+      window.removeEventListener('touchstart', startAnalytics);
+    }
+    
+    window.addEventListener('scroll', startAnalytics, { passive: true, once: true });
+    window.addEventListener('click', startAnalytics, { passive: true, once: true });
+    window.addEventListener('touchstart', startAnalytics, { passive: true, once: true });
+    setTimeout(startAnalytics, 4000);
+  </script>
+  
+  <!-- AdSense - Load after LCP with timeout -->
+  <script>
+    function loadAdSense() {
+      var script = document.createElement('script');
+      script.async = true;
+      script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8489033221779909";
+      script.crossOrigin = "anonymous";
+      document.head.appendChild(script);
+    }
+    
+    // Load AdSense after LCP or 3 seconds (whichever comes first)
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadAdSense, { timeout: 3000 });
+    } else {
+      setTimeout(loadAdSense, 3000);
+    }
+  </script>
+  
+  <!-- Critical performance optimizer (load immediately) -->
+  <script src="optimize-performance.min.js"></script>
+  
+  <!-- Load game scripts -->
+  <script src="js/YourGameScript.min.js" defer></script>
+  <script src="js/voice-commands.min.js" defer></script>
+  
+  <!-- Performance monitoring (only in production) -->
+  <script>
+    if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+      var perfScript = document.createElement('script');
+      perfScript.src = 'js/performance-monitor.min.js';
+      perfScript.defer = true;
+      document.head.appendChild(perfScript);
+    }
+  </script>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoGame",
+      "name": "Jeu du Pendu",
+      "description": "Jeu du pendu en ligne gratuit avec plus de 10,000 mots français",
+      "genre": ["Word Game", "Educational Game"],
+      "gamePlatform": "Web Browser",
+      "inLanguage": "fr",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      
+      "author": {
+        "@type": "Organization",
+        "name": "JeuDuPendu.com",
+        "url": "https://www.jeudupendu.com"
+      },
+      "hasPart": [
+        {
+          "@type": "VideoGame",
+          "name": "Jeu du Pendu - Version Difficile",
+          "url": "https://www.jeudupendu.com/pendu-mot-difficile-complique/"
+        },
+        {
+          "@type": "VideoGame",
+          "name": "Jeu du Pendu - Multijoueur",
+          "url": "https://www.jeudupendu.com/multijoueur/"
+        }
+      ]
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header">Jeu du Pendu</div>
+  <div id="game">
+    <div class="column"></div>
+    <div class="column">
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <p id="modalMessage" style="color: #29b6f6"></p>
+          <button id="modalButton">JOUER À D’AUTRES JEUX</button>
+
+          <p style="color: #f15a29">
+            <a id="restartButton">Recommencer</a>
+          </p>
+        </div>
+      </div>
+      <div id="subscriptionModal" class="modal">
+        <div class="modal-content">
+          <p id="subscriptionModalMessage" style="color: #29b6f6">
+            Merci de vous être inscrit.
+          </p>
+          <button id="subscriptionModalButton">Continuer à jouer</button>
+        </div>
+      </div>
+      
+      <svg id="hangman" width="200" height="200" style="display: inline">
+        <line id="ground-part-structure" x1="0" y1="199" x2="120" y2="199" stroke="white" stroke-width="3" />
+        <line id="main-part-structure" x1="30" y1="0" x2="30" y2="200" stroke="white" stroke-width="4" />
+        <line id="top-part-structure" x1="30" y1="2" x2="130" y2="2" stroke="white" stroke-width="4" />
+        <line id="rope" x1="130" y1="20" x2="130" y2="0" stroke="white" stroke-width="2" />
+        <circle id="head" cx="130" cy="50" r="30" style="display: none" stroke="white" stroke-width="3"
+          fill="transparent" />
+        <line id="body" x1="130" y1="80" x2="130" y2="130" style="display: none" stroke="white" stroke-width="3" />
+        <line id="left-arm" x1="130" y1="90" x2="100" y2="120" style="display: none" stroke="white" stroke-width="3" />
+        <line id="right-arm" x1="130" y1="90" x2="160" y2="120" style="display: none" stroke="white" stroke-width="3" />
+        <line id="left-leg" x1="130" y1="130" x2="100" y2="170" style="display: none" stroke="white" stroke-width="3" />
+        <line id="right-leg" x1="130" y1="130" x2="160" y2="170" style="display: none" stroke="white"
+          stroke-width="3" />
+      </svg>
+      <p id="underscore"></p>
+      <p class="incorrectLetters" id="incorrectLetters"></p>
+      <div class="keyboard">
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="a">A</button>
+          <button class="keyboard-button" value="z">Z</button>
+          <button class="keyboard-button" value="e">E</button>
+          <button class="keyboard-button" value="r">R</button>
+          <button class="keyboard-button" value="t">T</button>
+          <button class="keyboard-button" value="y">Y</button>
+          <button class="keyboard-button" value="u">U</button>
+          <button class="keyboard-button" value="i" style="padding-left: 0.5em; padding-right: 0.5em">
+            I
+          </button>
+          <button class="keyboard-button" value="o">O</button>
+          <button class="keyboard-button" value="p">P</button>
+        </div>
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="q">Q</button>
+          <button class="keyboard-button" value="s">S</button>
+          <button class="keyboard-button" value="d">D</button>
+          <button class="keyboard-button" value="f">F</button>
+          <button class="keyboard-button" value="g">G</button>
+          <button class="keyboard-button" value="h">H</button>
+          <button class="keyboard-button" value="j">J</button>
+          <button class="keyboard-button" value="k">K</button>
+          <button class="keyboard-button" value="l">L</button>
+          <button class="keyboard-button" value="m">M</button>
+        </div>
+        <div class="keyboard-row">
+          <button class="keyboard-button" value="w">W</button>
+          <button class="keyboard-button" value="x">X</button>
+          <button class="keyboard-button" value="c">C</button>
+          <button class="keyboard-button" value="v">V</button>
+          <button class="keyboard-button" value="b">B</button>
+          <button class="keyboard-button" value="n">N</button>
+        </div>
+      </div>
+    </div>
+    <div class="column"></div>
+  </div>
+
+  <section class="subscribe">
+    <div class="contentsubscribe">
+      <p class="subscribe-text">
+        Inscrivez-vous pour être tenu au courant des dernières mises à jour du
+        jeu du pendu et des nouveaux jeux que je développe.
+      </p>
+    </div>
+    <form action="https://app.convertkit.com/forms/6651832/subscriptions" class="seva-form formkit-form" method="post"
+      data-sv-form="6651832" data-uid="f77886e4ca" data-format="inline" data-version="5"
+      data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"","redirect_url":"https://jeudupendu.com/?subscribed=true"},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+      min-width="400 500 600 700 800">
+      <div data-style="clean">
+        <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+        <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
+          <div class="formkit-field">
+            <input class="formkit-input" id="email" name="email_address" aria-label="Email Address"
+              placeholder="Adresse Email" required="" type="email" />
+          </div>
+          <button data-element="submit" class="formkit-submit formkit-submit">
+            <div class="formkit-spinner">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <span>Envoyer</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <div class="content">
+    <h1 class="titleh1">Jouez au Jeu du Pendu en Ligne et Gratuit</h1>
+    <p>
+      Jouez au Jeu du Pendu en Ligne et Gratuit. Défiez-vous avec plus de
+      10000 mots en aléatoires.
+    </p>
+    <p>
+      Ce jeu est considéré comme le jeu classique du Pendu. C’est-à-dire que
+      vous avez un maximum de 6 essais pour trouver le mot.
+    </p>
+    <p>
+      Nous avons gardé le gameplay original et le style de ce classique
+      intemporel, et avons amélioré ses graphiques et fonctionnalités. Gardez
+      votre esprit vif et détendez-vous en jouant à ce jeu du pendu classique.
+    </p>
+    <p>
+      Nous mettons régulièrement à jour notre site en fonction des
+      commentaires des utilisateurs. N'hésitez pas à nous contacter à
+      <a class="link" href="mailto:contact@jeudupendu.com">contact@jeudupendu.com</a>
+      si vous avez des commentaires ou des questions. La dernière mise à jour
+      a eu lieu le 14 décembre 2024. Amusez-vous bien !
+    </p>
+
+    <h2 class="titleh2">Les différentes versions du Jeu du Pendu</h2>
+    <p>
+      Notre site propose plusieurs versions du jeu du pendu pour s'adapter à tous les joueurs :
+    </p>
+    <ul>
+      <li>
+        <strong><a href="https://www.jeudupendu.com/">Version Classique</a></strong> - Le jeu traditionnel avec plus de 10 000 mots français courants.
+      </li>
+      <li>
+        <strong><a href="https://www.jeudupendu.com/pendu-mot-difficile-complique/">Version Difficile</a></strong> - Pour les experts, avec des mots rares et complexes de la langue française.
+      </li>
+      <li>
+        <strong><a href="https://www.jeudupendu.com/multijoueur/">Version Multijoueur</a></strong> - Jouez avec vos amis en choisissant vos propres mots.
+      </li>
+    </ul>
+
+
+    <h2 class="titleh2">
+      Quelles sont les règles du jeu du pendu ? Comment y joue-t-on ?
+    </h2>
+    <p>
+      Le jeu du pendu se joue généralement à deux personnes, bien qu'il existe
+      des variantes en ligne avec plus de joueurs et des thèmes spécifiques.
+      <br /><br />
+
+      L'un des joueurs pense à un mot, une phrase ou une expression (selon la
+      version) et dessine une potence et des tirets, un pour chaque lettre du
+      mot ou de l'expression, sans tirets pour les espaces. Si vous jouez au
+      Jeu du Pendu en ligne, cela est fait automatiquement pour vous.<br /><br />
+
+      L'autre joueur, essayant de deviner le mot, annonce une lettre à chaque
+      tour. <br /><br />
+
+      Si la lettre fait partie du mot, elle est inscrite à sa place sur les
+      tirets correspondants, autant de fois qu'elle apparaît dans le mot.
+      <br /><br />
+
+      Si la lettre n'est pas dans le mot, un trait est ajouté au dessin du
+      pendu. Le jeu continue jusqu'à ce que le mot soit deviné (le joueur qui
+      devine gagne) ou que le dessin du pendu soit complété (le joueur qui a
+      choisi le mot gagne). <br /><br />
+
+      Le nombre de coups, c'est-à-dire le nombre de traits nécessaires pour
+      dessiner le pendu, peut varier, allant généralement de 6 à 12, et peut
+      être augmenté pour faciliter le jeu en ajoutant plus de traits au
+      dessin. <br /><br />
+
+      Certaines versions peuvent également inclure des phrases, des titres de
+      films, de chansons, de livres ou des citations à deviner, introduisant
+      ainsi des variantes supplémentaires au jeu traditionnel.
+    </p>
+
+    <h2 class="titleh2">
+      Quel est le mot le plus difficile au jeu du pendu ?
+    </h2>
+    <p>
+      Bien que l'on puisse penser que les
+      <a class="link" href="https://www.jeudupendu.com/pendu-mot-difficile-complique/">
+        mots longs et complexes
+      </a>
+      constituent le défi ultime, la réalité est plus nuancée. <br /><br />
+
+      Selon les analyses, un "mot compliqué" pour le jeu du pendu ne se mesure
+      pas uniquement par sa longueur ou son obscurité, mais par la stratégie
+      de sélection. Les mots de 4 à 5 lettres, particulièrement ceux avec des
+      lettres peu communes ou des finales similaires comme -uzz ou -uff,
+      peuvent s'avérer étonnamment ardus à deviner. Des exemples tels que
+      "Jazz", "Buzz", ou même des termes techniques comme "Zugzwang"
+      illustrent cette complexité. <br /><br />
+
+      En outre, des mots rares, des jeux de mots ou des mots contenant des
+      combinaisons inhabituelles de lettres augmentent la difficulté. La
+      sélection d'un mot compliqué pendu requiert donc une compréhension
+      subtile de la psychologie du joueur, une connaissance des lettres
+      fréquemment choisies, et une appréciation des mots qui sont à la fois
+      courts et contiennent des lettres rares. Le choix judicieux d'un mot
+      peut transformer le jeu en une énigme captivante et stimulante, mettant
+      en évidence le caractère éducatif et divertissant du pendu.
+    </p>
+
+    <h2 class="titleh2">Comment gagne-t-on au Jeu du Pendu ?</h2>
+    <ol>
+      <li>
+        Commencez par les lettres les plus fréquentes : En français, certaines
+        lettres apparaissent plus fréquemment que d'autres. Les lettres les
+        plus couramment utilisées sont, dans l'ordre, E, A, S, I, N, T, R, U,
+        O, L. Commencez par ces lettres pour avoir plus de chances de trouver
+        celles qui figurent dans le mot.
+      </li>
+      <li>
+        Prenez en compte la longueur du mot : Si le mot est court, il est plus
+        probable qu'il contienne des lettres moins fréquentes. Si le mot est
+        long, il y a de meilleures chances qu'il contienne plusieurs des
+        lettres les plus courantes.
+      </li>
+      <li>
+        Utilisez des lettres qui apparaissent souvent ensemble : En français,
+        certaines lettres ont tendance à apparaître ensemble. Par exemple, si
+        vous avez découvert une lettre "Q", il y a de grandes chances que la
+        lettre suivante soit un "U". Si vous avez une lettre "E", il y a de
+        fortes chances que la lettre suivante ou précédente soit un "S" ou un
+        "T".
+      </li>
+      <li>
+        Rappelez-vous des mots précédents : Si vous jouez plusieurs fois avec
+        le même adversaire, essayez de vous souvenir des mots qu'il a utilisés
+        précédemment. Il y a de bonnes chances qu'il répète certains mots ou
+        qu'il utilise des mots similaires.
+      </li>
+      <li>
+        Envisagez toutes les possibilités : Lorsque vous avez découvert
+        certaines lettres, essayez de penser à tous les mots possibles qui
+        pourraient correspondre à ce modèle. Cela peut vous aider à choisir la
+        meilleure lettre à essayer ensuite.
+      </li>
+      <li>
+        Ne vous précipitez pas : Prenez votre temps pour réfléchir à votre
+        prochaine lettre. Il est préférable de passer un peu plus de temps à
+        choisir soigneusement votre lettre que de vous précipiter et de faire
+        une erreur.
+      </li>
+    </ol>
+    <p>
+      Rappelez-vous, cependant, que le Jeu du Pendu est en fin de compte un
+      jeu de hasard. Même si vous utilisez toutes ces stratégies, il y a
+      toujours une chance que vous ne réussissiez pas à deviner le mot à
+      temps. C'est ce qui rend le jeu excitant et amusant à jouer. Bonne
+      chance !
+    </p>
+  </div>
+  <footer>
+    <div class="container">
+      <div>
+        <h3>Autres Jeux</h3>
+        <p>
+          <a href="https://jeudusudoku.com/">Sudoku</a>
+        </p>
+        <p>
+          <a href="https://www.lejeudusolitaire.com/">Solitaire</a>
+        </p>
+        <p>
+          <a href="https://lejeudesociete.com/">Le Jeu de Société</a>
+        </p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p>
+          <a href="mailto:contact@jeudupendu.com">Email</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
